@@ -1,0 +1,57 @@
+#!/bin/bash
+# ObliviousGmn | github.com/ObliviousGmn
+# June 2014
+# Add/Change your Zip in Weather!
+# Dzen Right Side
+
+# Source
+. $HOME/Zenbash/Settings   
+
+# Going from Right to Left.
+
+# 1st Arrow
+ CPU() {
+  Temp=$(sensors | awk '/Core0/ {print +$3}')
+  if [[ "$Temp" -lt "$Cool" ]]; then 
+	printf "${Htop}${BG1}${FG0}${AL}${BG0} ${HTC1}${HT}${CC}  "
+  elif
+	[[ "$Temp" -le "$Warm" ]]; then
+	printf "${Htop}${BG1}${FG0}${AL}${BG0} ${HTC2}${HT}${CC}  "
+  else
+	printf "${Htop}${BG1}${FG0}${AL}${BG0} ${HTC3}${HT}${CC}  "
+  fi
+  return
+ }
+
+# 2nd Arrow
+ USERNAME() {
+	Username=$(printf "$USER" | sed -e "s/\b\(.\)/\u\1/g")
+	printf "${BG2}${FG1}${AL}${BG1} ${FGA}${P}${Username}${PC}  "
+ return
+ }
+
+# 3rd Arrow
+ WEATHER(){
+	Weather=$($HOME/Zenbash/Weather "$Location")
+	printf "${BGC}${FG2}${AL}${BG2} ${FGB}${P}NYC Weather, $Weather${PC}  "
+ return
+ }
+
+# Quick Edit (Optional)
+ EDIT() {
+	printf "${EditB}     ${CC}${CC}"
+ return
+ }
+
+ loops=0
+ while true; do
+   [[ loops -eq 1800 ]] && loops=0
+   [[ loops -eq 0 ]] && W=$(WEATHER)
+   loops=$(( loops + 1 ))
+
+        echo "$(EDIT)$W$(USERNAME)$(CPU)"
+
+   sleep 1
+   done | dzen2 -dock -x ${WB} -w ${WB} -h ${HB} -fn ${FN} -bg ${BG} -ta r ${DZ}
+
+# End of File

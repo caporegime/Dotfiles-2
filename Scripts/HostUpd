@@ -1,0 +1,29 @@
+#!/bin/bash
+# ObliviousGmn | https://github.com/ObliviousGmn/Dotfiles
+# Hostupd File, June 2014
+# SomeoneWhoCares ZeroHost File
+
+# Checks for hosts.local
+if [ ! -f /etc/hosts.local ]; then
+ echo "You need to create /etc/hosts.local containing the hosts you wish to keep!"
+ echo "Making the host.local file since it does not exist"
+ cp /etc/hosts /etc/hosts.local
+ echo "Created host.local Run script again" 
+ exit 0
+fi
+
+. Colors
+clear
+Gmnbox
+echo
+
+# Download File
+printf " ${Color1} >> ${Color7}Downloading SWC Host List %63s ${Color2} § \n" 
+ wget -c -O /tmp/hosts.txt http://someonewhocares.org/hosts/zero/hosts &>/dev/null
+
+ # Write File
+printf " ${Color1} >> ${Color7}Writing Host File %71s ${Color2} § \n"
+ cat /etc/hosts.local > /etc/hosts
+ cat /tmp/hosts.txt | tr -d "\r" >> /etc/hosts
+ rm /tmp/hosts*.txt
+echo

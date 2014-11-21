@@ -1,0 +1,23 @@
+#!/bin/bash
+# ObliviousGmn, June 2014
+# Master Settings 
+# Color Settings 
+
+# Colors 
+Color0="\e[0;30m"
+Color1="\e[0;31m"
+Color2="\e[0;32m"
+Color3="\e[0;33m"
+Color4="\e[0;34m"
+Color5="\e[0;35m"
+Color6="\e[0;36m"
+Color7="\e[0;37m"
+Color8="\e[1;30m"
+Color9="\e[1;31m"
+Color10="\e[1;32m"
+Color11="\e[1;33m"
+Color12="\e[1;34m"
+Color13="\e[1;35m"
+Color14="\e[1;36m"
+Color15="\e[1;37m"
+Reset="\e[0m"

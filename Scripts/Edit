@@ -1,0 +1,23 @@
+#!/bin/bash
+# ObliviousGmn, June 2014
+# Master Settings 
+# Edit Files
+
+Edit() {
+	case $1 in
+		alias)		vim ~/Gmnbox/Bin/alias ;;
+		bashrc)		vim ~/.bashrc ;;
+		xinitrc)	vim ~/.xinitrc ;;
+		pacman)		svim /etc/pacman.conf ;;
+		ncmpcpp)	vim ~/.ncmpcpp/config ;;
+		ranger)		vim ~/.config/ranger/rc.conf ;;
+		hostupd)	vim ~/Gmnbox/Bin/HostUpd ;;
+		backup)		vim ~/Gmnbox/Bin/Backup ;;
+		xdefaults)	vim ~/.Xdefaults ;;
+		dzenMPD)	leafpad ~/Gmnbox/Zencon/MPD ;;
+		dzenINFO)	leafpad ~/Gmnbox/Zencon/INFO ;;
+		dzenStart)	vim ~/Gmnbox/Bin/StartDzen ;;
+		tint2)		leafpad ~/.config/tint2/tint2rc ;;
+		*)		echo "You should probably add it idiot!!!" ;;
+	esac
+}

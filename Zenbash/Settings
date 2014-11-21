@@ -1,0 +1,66 @@
+#!/bin/bash
+# ObliviousGmn | github.com ObliviousGmn
+# Nov 2014
+# ZenBash Settings
+
+# Edit the goodies here! 
+# Check EVERYTHING Twice.
+# Make sure to fix to your dirs!
+
+# Icons
+ HT="^i($HOME/Zenbash/Icons/Heart.xbm)"
+ HP="^i($HOME/Zenbash/Icons/Headphone.xbm)"
+ AR="^i($HOME/Zenbash/Icons/RIGHT.xbm)"
+ AL="^i($HOME/Zenbash/Icons/LEFT.xbm)"
+
+# Colors
+# 1st Bar 
+ BG0="^bg(#131314)"   # Background color
+ FG0="^fg(#131314)"   # Foreground color
+# 2nd Bar
+ BG1="^bg(#20202E)"   # Background color
+ FG1="^fg(#20202E)"   # Foreground color
+# 3rd Bar
+ BG2="^bg(#131314)"   # Background color
+ FG2="^fg(#131314)"   # Foreground color
+
+# Heart Colors
+ HTC1="^fg(#20202E)"  # Neutral Cpu temp color
+ HTC2="^fg(#30627C)"  # Mid
+ HTC3="^fg(#56707E)"  # High
+ 
+# Font Colors
+ HPON="^fg(#BFBFBF)"  # 1st Bar, Headphone on
+ HPOFF="^fg(#20202E)" # 1st Bar, Headphone off
+ FGA="^fg(#BFBFBF)"   # 2nd Bar
+ FGB="^fg(#BFBFBF)"   # 3rd Bar
+
+# Closers
+ BGC="^bg()"          # Background Closer
+ FGC="^fg()"          # Foreground Closer
+ CC="^ca()"           # Click Closer
+ PC="^p()"            # Postion Closer
+
+# Tweak Bits
+ P="^p(;+1Y)"         # Postion
+ Cool="38"            # CPU Temps
+ Warm="48"            # CPU Temps
+
+# Weather
+ Location="10039"     # Your Zipcode
+
+# Dzen Bits
+ HB="24"                                                  # Height					
+ WB="960"                                                 # Width
+ BG="#1C1C24"                                             # Background for Dzen
+ FN="-*-cure-medium-*-*-*-*-*-*-*-*-*-*-*"                # Font, Cure from artiz fonts.
+ DZ="-e 'onstart=uncollapse;key_Escape=ungrabkeys,exit' " # Disables closing with right mouse clicks.
+
+# Clicky Bits
+ Player="^ca(1, urxvt -g 100x10 -e ncmpcpp)"
+ Remind="^ca(1,urxvt -g 100x8 -e vim ~/.reminder)"
+ Htop="^ca(1,urxvt -g 125x50 -e htop)"
+ EditA="^ca(1, leafpad $HOME/Zenbash/Left)^ca(2, leafpad $HOME/Zenbash/Settings)"  # Clicky bits for quick Edits
+ EditB="^ca(1, leafpad $HOME/Zenbash/Right)^ca(2, leafpad $HOME/Zenbash/Settings)" # Clicky bits for quick Edits
+
+# End of File

@@ -1,0 +1,7 @@
+#!/bin/bash
+# ObliviousGmn, June 2014
+# Master Settings 
+
+. Manpage
+. Edit
+. Paints

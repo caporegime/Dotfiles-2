@@ -1,0 +1,76 @@
+#!/bin/bash    
+# ObliviousGmn | https://github.com/ObliviousGmn/Dotfiles
+# October 2014
+# Creates Backups & mv to Usbstick.
+
+clear
+Gmnbox
+. Colors
+
+# Shortcuts
+Bkup="Backup_$(date +%m_%Y).tar"
+Dropoff="$HOME/.usbstick/Backups"
+MP="$HOME/.usbstick"
+
+# Check if .Usbstick is mounted
+if [ $(mount | grep -c ${MP}) != 1 ]; then
+	echo
+	printf " ${Color1} >> ${Color7}Mount The USB %75s ${Color1} ¨ \n"
+	echo
+	exit 0
+fi	
+
+echo
+printf " ${Color1} >> ${Color7}Copying Configs %73s ${Color2} § \n"
+
+# Add Folders to make it neater
+ mkdir Backup
+ mkdir Backup/Home
+ mkdir Backup/Config
+ mkdir Backup/Ncmpcpp
+ mkdir Backup/Weechat
+ mkdir Backup/Root
+ mkdir Backup/Torrent
+ mkdir Backup/Netctl
+
+# Home dot files
+ cp $HOME/.xinitrc Backup/Home
+ cp $HOME/.Xdefaults Backup/Home
+ cp $HOME/.bashrc Backup/Home
+ cp -ar $HOME/.fonts Backup/Home
+
+# Root Files
+ cp /etc/mpd.conf Backup/Root
+ cp /etc/vimrc Backup/Root
+ cp /etc/hosts.local Backup/Root
+ cp /etc/netctl/Gmnbox Backup/Netctl
+
+# Configs
+ cp -ar $HOME/Gmnbox Backup
+ cp -ar $HOME/.mplayer Backup/Config
+ cp -ar $HOME/.config/luakit Backup/Config
+ cp -ar $HOME/.config/openbox Backup/Config
+ cp -ar $HOME/.config/ranger Backup/Config
+ cp -ar $HOME/.config/tint2 Backup/Config
+ cp -ar $HOME/.config/htop Backup/Config
+ cp -ar $HOME/.config/youtube-viewer Backup/Config
+ cp -ar $HOME/.themes/Gmnbox Backup/Home
+ cp -ar $HOME/Music/Radio Backup/Ncmpcpp
+# -----
+ cp $HOME/.ncmpcpp/config Backup/Ncmpcpp
+ cp $HOME/.config/transmission-daemon/settings.json Backup/Torrent
+ cp $HOME/.weechat/weechat.conf Backup/Weechat
+ cp $HOME/.weechat/irc.conf Backup/Weechat
+ cp $HOME/.config/gempaper.rb Backup/Config 
+ cp $HOME/.local/share/luakit/bookmarks.db Backup/Config/luakit
+
+# The Action
+printf " ${Color1} >> ${Color7}Creating Backup Folder %66s ${Color2} § \n"
+ tar cf ${Bkup} Backup;
+
+printf " ${Color1} >> ${Color7}Upload/Sweep %76s ${Color2} § \n"
+ rm -r Backup/
+ mv ${Bkup} ${Dropoff};
+echo
+
+# End of File

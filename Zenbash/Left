@@ -1,0 +1,45 @@
+#!/bin/bash
+# ObliviousGmn | github.com/ObliviousGmn
+# June 2014
+# Dzen Left Side
+
+# Source
+. $HOME/Zenbash/Settings   
+
+# 1st Arrow
+ MPD() {
+  Tune=$(ncmpcpp --now-playing)
+  if [[ $Tune ]]; then 
+	printf "${Player}${BG0}${HPON}  ${HP} ${BG1}${FG0}${AR}${CC}"
+  else
+	printf "${Player}${BG0}${HPOFF}  ${HP} ${BG1}${FG0}${AR}${CC}"
+  fi
+  return
+ }
+
+# 2nd Arrow
+ DATE() {
+  Date=$(date +"%b %d, %a %I:%M")
+	printf "${BG1}${FGA}  ${P}${Date}${PC} ${BG2}${FG1}${AR}"
+  return
+ }
+
+# 3rd Arrow
+ CAT() {
+  Getit=$(cat $HOME/.reminder)
+	printf "${Remind}${BG2}${FGB}  ${P}${Getit}${PC} ${BGC}${FG2}${AR}${CC}"
+  return
+ }
+
+# Quick Edit. (Optional)
+ EDIT() {
+	printf "${EditA}     ${CC}${CC}"
+ }	
+
+while true
+do
+	sleep 1
+	echo "$(MPD)$(DATE)$(CAT)$(EDIT)"
+	done | dzen2 -dock -w ${WB} -h ${HB} -fn ${FN} -bg ${BG} -ta l ${DZ}
+
+# End of File

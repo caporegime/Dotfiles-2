@@ -1,0 +1,84 @@
+# Tint2 config file
+# Pallete
+# Bar = #131314
+# Font = #6E8CA0
+
+# Background definitions
+# ID 1
+rounded = 0
+border_width = 0
+background_color = #131314 100
+border_color = #ECEDEE 0
+
+# Panel
+panel_monitor = all
+panel_position = bottom center horizontal
+panel_size = 1920 24
+panel_margin = 31 0
+panel_padding = 8 0 0
+panel_dock = 0
+wm_menu = 0
+panel_layer = bottom
+panel_background_id = 1
+
+# Panel Autohide
+autohide = 0
+autohide_show_timeout = 0.0
+autohide_hide_timeout = 0.0
+autohide_height = 0
+strut_policy = none
+
+# Taskbar
+taskbar_mode = single_desktop
+taskbar_padding = 4 4 4
+taskbar_background_id = 0
+#taskbar_active_background_id = 0
+
+# Tasks
+urgent_nb_of_blink = 4
+task_icon = 0
+task_text = 1
+task_centered = 1
+task_maximum_size = 200 24
+task_padding = 8 4
+task_background_id = 0
+task_active_background_id = 0
+task_urgent_background_id = 0
+task_iconified_background_id = 0
+
+# Task Icons
+task_icon_asb = 100 0 0
+task_active_icon_asb = 100 0 0
+task_urgent_icon_asb = 100 0 0
+task_iconified_icon_asb = 100 0 0
+
+# Fonts
+task_font = cure
+task_font_color = #464664 50
+task_active_font_color = #464664 100
+font_shadow = 0
+
+# System Tray
+systray = 0
+systray_padding = 0 0 0
+systray_sort = ascending
+systray_background_id = 0
+systray_icon_size = 0
+systray_icon_asb = 100 0 0
+
+# Tooltips
+tooltip = 0
+tooltip_padding = 0 0
+tooltip_show_timeout = 0
+tooltip_hide_timeout = 0
+tooltip_background_id = 0
+tooltip_font = cure
+tooltip_font_color = #ECEDEE 100
+
+# Mouse
+mouse_middle = close
+mouse_right = none
+mouse_scroll_up = toggle
+mouse_scroll_down = iconify
+
+# End of config
