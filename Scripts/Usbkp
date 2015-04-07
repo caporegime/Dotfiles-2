@@ -1,0 +1,95 @@
+#!/bin/bash    
+# ObliviousGmn April 2014
+# Backups for Usb
+
+clear
+. Colors
+
+# Prints Filename & Date
+Space="82"
+printf " ${Red}${0##*/} %${Space}s $(date +%I:%M)${Reset} \n\n"
+
+# Useless magic trick
+progress () {
+	 for ((i = 0; i < $1; i++)); do printf "${Black}.${Reset}"; sleep 0.02; \
+	 done; printf " ${Blue}[${Reset} COMPLETE ${Blue}]${Reset} \n" ;
+}
+
+error () {
+	 for ((i = 0; i < $1; i++)); do printf "${Black}.${Reset}"; sleep 0.02; \
+	 done; printf " ${Red}[${Reset} ERROR ${Red}]${Reset} \n" ;
+}
+
+# Setup
+Bkup="Backup_$(date +%m_%Y).tar"
+Dropoff="$HOME/.usbstick/Backups"
+MP="$HOME/.usbstick"
+
+# Check if .Usbstick is mounted
+if [ $(mount | grep -c ${MP}) != 1 ]; then
+	printf "  Checking for Dropoff "
+	error 30
+	echo
+	exit 0
+fi	
+
+printf "  Organizing Files " 
+
+# Add Folders to make it neater
+ mkdir Backup
+ mkdir Backup/Home
+ mkdir Backup/Config
+ mkdir Backup/Ncmpcpp
+ mkdir Backup/Weechat
+ mkdir Backup/Root
+ mkdir Backup/Torrent
+ mkdir Backup/Netctl
+ mkdir Backup/2bwm
+
+# Home dot files
+ cp $HOME/.xinitrc Backup/Home
+ cp $HOME/.Xdefaults Backup/Home
+ cp $HOME/.bashrc Backup/Home
+ cp -ar $HOME/.fonts Backup/Home
+
+# Root Files
+ cp /etc/vimrc Backup/Root
+ cp /etc/hosts.local Backup/Root
+ cp /etc/netctl/Gmnbox Backup/Netctl
+
+# Configs
+ cp -ar $HOME/Gmnbox Backup
+ cp -ar $HOME/.config/luakit Backup/Config
+ cp -ar $HOME/.config/openbox Backup/Config
+ cp -ar $HOME/.config/ranger Backup/Config
+ cp -ar $HOME/.config/tint2 Backup/Config
+ cp -ar $HOME/.config/htop Backup/Config
+ cp -ar $HOME/.config/youtube-viewer Backup/Config
+# -- 
+ cp -ar $HOME/Media/Music/Radio Backup/Ncmpcpp
+# --
+ cp $HOME/.ncmpcpp/config Backup/Ncmpcpp
+ cp $HOME/.config/transmission-daemon/settings.json Backup/Torrent
+ cp $HOME/.weechat/weechat.conf Backup/Weechat
+ cp $HOME/.weechat/irc.conf Backup/Weechat
+ cp $HOME/.local/share/luakit/bookmarks.db Backup/Config/luakit
+ cp $HOME/.Source/2bwm/config.h Backup/2bwm
+progress 66
+
+# The Action
+
+printf "  Zipping Folder " 
+
+ tar cf ${Bkup} Backup;
+
+progress 68
+
+printf "  Cleaning up " 
+
+ rm -r Backup/
+ mv ${Bkup} ${Dropoff};
+
+progress 71
+echo
+
+# End of File

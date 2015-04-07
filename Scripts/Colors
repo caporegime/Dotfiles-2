@@ -1,0 +1,23 @@
+#!/bin/bash
+# ObliviousGmn
+
+# Colors 
+ Black="\e[0;30m"
+ Red="\e[0;31m"
+ Green="\e[0;32m"
+ Yellow="\e[0;33m"
+ Blue="\e[0;34m"
+ Magenta="\e[0;35m"
+ Cyan="\e[0;36m"
+ White="\e[0;37m"
+
+ BlackB="\e[1;30m"
+ RedB="\e[1;31m"
+ GreenB="\e[1;32m"
+ YellowB="\e[1;33m"
+ BlueB="\e[1;34m"
+ MagentaB="\e[1;35m"
+ CyanB="\e[1;36m"
+ WhiteB="\e[1;37m"
+ 
+ Reset="\e[0m"

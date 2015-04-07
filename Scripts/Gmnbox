@@ -1,0 +1,7 @@
+#!/bin/bash
+# ObliviousGmn | github.com/ObliviousGmn
+# To make my Terminals look pretty.
+. Colors
+
+printf " ${Red}$(hostname) %85s $(date +%I:%M)${Reset} \n"
+
