@@ -36,7 +36,7 @@ progress () {
 
 # Getting the Hostfile
 printf "  Downloading Hosts " 
- wget -c -O /tmp/hosts.txt http://someonewhocares.org/hosts/zero/hosts &>/dev/null &
+ wget -c -O /tmp/hosts.txt http://someonewhocares.org/hosts/zero/hosts &>/dev/null
 progress 65
 
 # Making it pretty 
