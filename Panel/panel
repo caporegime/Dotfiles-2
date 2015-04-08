@@ -1,6 +1,7 @@
 #!/bin/bash
 # Lemonbar Setup 
 # April 2015
+# Thanks to b4dtr1p, for the setup.
 
 . $HOME/Gmnbox/Panel/bar_config
 
