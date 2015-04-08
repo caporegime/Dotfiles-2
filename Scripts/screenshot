@@ -1,0 +1,11 @@
+#!/bin/sh
+# ObliviousGmn, April 2015
+# takes a screenshot with a lame ass sound effect -_-
+
+. $HOME/Gmnbox/Panel/bar_config
+
+aplay -q $HOME/Gmnbox/Panel/camera.wav &
+scrot -d 1 -z -t 15 -q 100 '/home/oblivious/Media/Screens/%m_%d_%Y.png'\
+       	| Lemonpop %{F$CYAN} ${F-}%{F$YELLOW} Taking a screenshot..
+
+

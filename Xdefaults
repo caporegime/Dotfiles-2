@@ -1,0 +1,23 @@
+# ObliviousGmn
+# Xdefaults 
+ 
+#include "/home/oblivious/Gmnbox/Colors/Reborn"
+
+ Xft.dpi: 96
+ Xft.antialias: 1
+ Xft.hinting: 1
+ Xft.rgba: rgb
+ Xft.hintstyle:         hintslight
+ Xft.lcdfilter:         lcddefault
+
+ *font:		xft:gmnterm
+ *boldFont:	xft:gmnterm
+
+ *scrollBar: 	false
+ *geometry:   	100x8
+ *cursorBlink: 	true
+ *cursorUnderline: true
+ *internalBorder: 6
+ *perl-ext-common: default,matcher
+ *url-launcher: /usr/bin/luakit
+ *matcher.button: 1

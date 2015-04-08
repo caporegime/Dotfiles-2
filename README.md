@@ -4,13 +4,11 @@ Dotfiles
  My Babies! Handle them with care. 
 
  What I'm packing
-  + OPENBOX
-  + Tint2
-  + Dzen2
+  + 2bwm
+  + Lemonbar
   + Luakit
   + Ncmpcpp
-  + Feh & Gempaper - To make my Wallpapers with shadows for the Bars
-  + Xcompmgr       - For the shadows on the windows.
+  + Compton
 
 Screenshot
 ========  

@@ -1,0 +1,22 @@
+#!/bin/sh
+# Obliviousgmn, April 2015
+# Lemonpop, Lemon scented popup bar.
+# Thanks to z3bra for the idea!
+
+. $HOME/Gmnbox/Panel/bar_config
+
+# Set sleep & Geo
+zZz=15
+
+BX=1690
+BY=45
+BW=220
+BH=26
+
+Setup="-g ${BW}x${BH}+${BX}+${BY} -f ${FONT1},${FONT2} -B ${BG} -F ${FG}"
+
+# The Action
+# While read allows clickingi to launch applications..
+# | while read line; do eval "$line"; done
+
+(echo -e "%{F$YELLOW}%{c}$@"; sleep ${zZz}) | lemonbar ${Setup} &

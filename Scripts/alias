@@ -37,11 +37,6 @@
  alias Section='apropos'
  alias Headphones='amixer set Line\ Out toggle'
 
-# iPod
- alias iFuse='sudo modprobe fuse'
- alias iFusedown='killall ifuse'
- alias iFuseup='ifuse --root $HOME/.iPod && thunar $HOME/.iPod'
-
 # System
  alias SetGame='xrandr --output VGA1 --mode 640x480'
  alias Copy='xclip -selection clipboard'
