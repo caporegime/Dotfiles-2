@@ -7,6 +7,7 @@
 if [ ! -f /etc/hosts.local ]; then
  echo "You need to create /etc/hosts.local"
  echo "But you're an idiot, So I'll make one for you"
+ echo "Don't worry is only a copy of your existing hosts"
  echo
  cp /etc/hosts /etc/hosts.local
  echo "Okay, Did it for you.. You owe me, Run this again."

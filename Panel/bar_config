@@ -2,21 +2,24 @@
 # April 2015
 # Panel Settings
 
+# Color directory
+CD="$HOME/Gmnbox/Colors/Reborn"
+
 # Fonts
 FONT1="-*-profont-medium-*-*--12-*-*-*-*-*-*-1"
 FONT2="-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"
 
 # Fetch the Colors
-BG=$(cat $HOME/Gmnbox/Colors/Reborn | grep -i background | tail -c 8)
-FG=$(cat $HOME/Gmnbox/Colors/Reborn | grep -i foreground | tail -c 8)
+BG=$(cat ${CD} | grep -i background | tail -c 8)
+FG=$(cat ${CD} | grep -i foreground | tail -c 8)
 
 
-BLACK=$(cat $HOME/Gmnbox/Colors/Reborn | grep -i color8 | tail -c 8)
-RED=$(cat $HOME/Gmnbox/Colors/Reborn | grep -i color9 | tail -c 8)
-GREEN=$(cat $HOME/Gmnbox/Colors/Reborn | grep -i color10 | tail -c 8)
-YELLOW=$(cat $HOME/Gmnbox/Colors/Reborn | grep -i color11 | tail -c 8)
-BLUE=$(cat $HOME/Gmnbox/Colors/Reborn | grep -i color12 | tail -c 8)
-MAGENTA=$(cat $HOME/Gmnbox/Colors/Reborn | grep -i color13 | tail -c 8)
-CYAN=$(cat $HOME/Gmnbox/Colors/Reborn | grep -i color14 | tail -c 8)
-WHITE=$(cat $HOME/Gmnbox/Colors/Reborn | grep -i color15 | tail -c 8)
+BLACK=$(cat ${CD} | grep -i color8 | tail -c 8)
+RED=$(cat ${CD} | grep -i color9 | tail -c 8)
+GREEN=$(cat ${CD} | grep -i color10 | tail -c 8)
+YELLOW=$(cat ${CD} | grep -i color11 | tail -c 8)
+BLUE=$(cat ${CD} | grep -i color12 | tail -c 8)
+MAGENTA=$(cat ${CD} | grep -i color13 | tail -c 8)
+CYAN=$(cat ${CD} | grep -i color14 | tail -c 8)
+WHITE=$(cat ${CD} | grep -i color15 | tail -c 8)
 

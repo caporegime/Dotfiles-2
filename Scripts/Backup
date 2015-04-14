@@ -6,14 +6,13 @@ clear
 . Colors
 
 # Prints Filename & Date
-printf " ${Color1}${0##*/} %85s $(date +%l:%M)${Reset} \n" 
-echo
+printf " ${Red}${0##*/} %85s $(date +%l:%M)${Reset} \n\n" 
 
 # Useless magic trick
 
 progress () {
-	 for ((i = 0; i < $1; i++)); do printf "${Color0}.${Reset}"; sleep 0.02; \
-	 done; printf " ${Color4}[${Reset} COMPLETE ${Color4}]${Reset} \n" ;
+	 for ((i = 0; i < $1; i++)); do printf "${Black}.${Reset}"; sleep 0.02; \
+	 done; printf " ${Blue}[${Reset} COMPLETE ${Blue}]${Reset} \n" ;
 }
 
 # Shortcuts
