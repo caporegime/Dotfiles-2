@@ -56,5 +56,5 @@ while true
  do 	
 	 echo " $(ws) $(menu) $(vol) %{c}$(mus) %{r}$(temp) $(fan) $(clock) "
          sleep 0.5	
- done | lemonbar -g 1900x26+10+10 -f "$FONT1","$FONT2" -B "$BG" -F "$FG" -p &
+ done | lemonbar -g ${PW}x${PH}+${PX}+${PY} -f "$FONT1","$FONT2" -B "$BG" -F "$FG" -p & 
 

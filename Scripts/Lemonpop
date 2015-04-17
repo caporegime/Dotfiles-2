@@ -4,19 +4,29 @@
 # Thanks to z3bra for the idea!
 
 . $HOME/Gmnbox/Panel/bar_config
-
-# Set sleep & Geo
-zZz=15
-
-BX=1690
-BY=45
-BW=220
-BH=26
-
-Setup="-g ${BW}x${BH}+${BX}+${BY} -f ${FONT1},${FONT2} -B ${BG} -F ${FG}"
+Setup="-g ${LW}x${LH}+${LX}+${LY} -f ${FONT1},${FONT2} -B ${BG} -F ${FG}"
+Click="while read line; do eval "$line"; done"
 
 # The Action
-# While read allows clickingi to launch applications..
-# | while read line; do eval "$line"; done
+case $1 in
 
-(echo -e "%{F$YELLOW}%{c}$@"; sleep ${zZz}) | lemonbar ${Setup} &
+	-l) # Longer duration option ..
+	shift
+	(echo -e "%{F$YELLOW}%{c}$@"; sleep ${ZZZ}) | lemonbar ${Setup} & 
+	;;
+
+	-c) # Clickable option w/ long duration .. 
+	shift
+	(echo -e "%{F$YELLOW}%{c}$@"; sleep ${ZZZ}) | lemonbar ${Setup} | $(Click) &
+	;;
+
+	-w) # Quick weather ..
+	shift	
+	(echo -e "%{F$CYAN}%{c}  %{F-}%{F$YELLOW} $(Weather 10039) "; sleep ${zzz}) | lemonbar ${Setup} &
+	;;
+
+	*) # Default option ..
+	(echo -e "%{F$YELLOW}%{c}$@"; sleep ${zzz}) | lemonbar ${Setup} &
+	;;
+esac
+

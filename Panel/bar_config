@@ -8,11 +8,32 @@ CD="$HOME/Gmnbox/Colors/Reborn"
 # Fonts
 FONT1="-*-profont-medium-*-*--12-*-*-*-*-*-*-1"
 FONT2="-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"
+FONT3="-lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1"
+
+# Bedtime
+ZZZ=16
+zzz=6
+
+# Panel 
+PW=1900
+PH=26
+PX=10
+PY=10
+
+# Lemonpop
+LW=220
+LH=26
+LX=1690
+LY=45
+
+# Sounds
+Beep="aplay -q $HOME/Gmnbox/Sounds/alarm.wav"
+Camera="aplay -q $HOME/Gmnbox/Sounds/camera.wav"
+Opps="aplay -q $HOME/Gmnbox/Sounds/opps.wav"
 
 # Fetch the Colors
 BG=$(cat ${CD} | grep -i background | tail -c 8)
 FG=$(cat ${CD} | grep -i foreground | tail -c 8)
-
 
 BLACK=$(cat ${CD} | grep -i color8 | tail -c 8)
 RED=$(cat ${CD} | grep -i color9 | tail -c 8)

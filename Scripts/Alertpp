@@ -1,0 +1,43 @@
+#!/bin/sh
+# Obliviousgmn April 2015
+# Alerts me with chime and popup!
+# Add While loop in Xinitrc?
+
+# Paths
+. $HOME/Gmnbox/Panel/bar_config
+ 
+function Alertpp {
+
+ALERT() {
+	wristwatch=$(date +%a%I%M);
+	case "$wristwatch" in	
+		
+	Tue0905|Tue0906)
+	        ${Beep} &	
+	        Lemonpop %{F$CYAN}  %{F-}%{F$YELLOW} Download Flash IPT!
+		;;
+
+	Wed0905|Tue0906)
+ 	        ${Beep} &	
+	        Lemonpop %{F$CYAN}  %{F-}%{F$YELLOW} Downlaod Arrow IPT!
+		;;
+
+	Wed1005|Wed1006)	
+ 	        ${Beep} &	
+	        Lemonpop %{F$CYAN}  %{F-}%{F$YELLOW} Download Supernatural IPT!
+		;;
+
+# Really here for testing..
+#	Thu0307|Thu0310)
+#	        ${Beep} &
+#	        Lemonpop %{F$CYAN}  %{F-}%{F$YELLOW} Hi, My name is popup!
+#		;;
+
+	esac
+}
+
+echo " $(ALERT) "
+
+}
+
+echo "$(Alertpp)"

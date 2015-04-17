@@ -7,12 +7,26 @@
 
 # Pacman
  alias Pacman='sudo pacman -S'
+ alias pacget='sudo pacman -S'
+
  alias Paclook='sudo pacman -Ss'
+ alias paclook='sudo pacman -Ss'
+
  alias Pacrem='sudo pacman -Rcns'
+ alias pacrem='sudo pacman -Rcns'
+
  alias Pacupd='sudo pacman -Syyu'
+ alias pacupd='sudo pacman -Syyu'
+
  alias Pacsync='sudo pacman -Syy'
+ alias pacsync='sudo pacman -Syy'
+
  alias Pacinfo='sudo pacman -Qi'
+ alias pacinfo='sudo pacman -Qi'
+
  alias PacAUR='yaourt -Syu --aur'
+ alias pacaur='yaourt -Syu --aur'
+
  alias Yaourt='yaourt -S'
 
 # Git
@@ -23,28 +37,42 @@
  alias Gpull='git pull'
 
 # Applications
- alias Suthunar='sudo thunar'
  alias svim='sudo vim'
  alias Yoump3='youtube-dl --extract-audio --audio-format mp3'
 
 # Configs
  alias ls='ls --color=auto'
  alias clear='clear && Gmnbox'
+ alias Panelrst='killall lemonbar; sh $HOME/Gmnbox/Panel/panel'
 
 # Custom
  alias Fontfix='gbdfed'
- alias Wallpaper='$HOME/Gmnbox/Bin/gempaper set'
- alias Section='apropos'
  alias Headphones='amixer set Line\ Out toggle'
 
+# Games
+ alias Terror='xrandr --output VGA1 --mode 640x480; urbanterror'
+ alias Setgame='xrander --output VGA! --mode 640x480'
+
 # System
- alias SetGame='xrandr --output VGA1 --mode 640x480'
  alias Copy='xclip -selection clipboard'
- alias Youtube_Fix='sudo iptables -I FORWARD -d 206.111.0.0/16 -j REJECT && sudo iptables -I FORWARD -d 173.194.55.0/24 -j REJECT'
+ alias Youtube_Fix='sudo iptables -I FORWARD -d 206.111.0.0/16 -j REJECT && \
+	sudo iptables -I FORWARD -d 173.194.55.0/24 -j REJECT'
 
 # Usb
  alias Usbup='sudo mount -o gid=users,uid=oblivious,fmask=113,dmask=002 /dev/sdb1 .usbstick'
  alias Usbdown='sudo umount .usbstick'
+
+# Toilet
+ alias 2023='toilet -f future'
+ alias gaym='toilet --gay -f mono9 -t'
+ alias gayf='toilet --gay -f future -t'
+ alias gayt='toilet --gay -f term -t'
+ alias gayp='toilet --gay -f pagga -t'
+ alias metm='toilet --metal -f mono9 -t'
+ alias metf='toilet --metal -f future -t'
+ alias mett='toilet --metal -f term -t'
+ alias metp='toilet --metal -f pagga -t'
+ alias 3d='figlet -f 3d'
 
 # Systemctl Shortcuts
 
@@ -54,14 +82,12 @@
  alias Plexstop='sudo systemctl stop plexmediaserver'
 
 # -- Plex library refresh
- alias Plex-refresh-Movies='curl http://localhost:32400/library/sections/7/refresh'
+ alias Plex-refresh-Movies='curl http://localhost:32400/library/sections/8/refresh'
  alias Plex-refresh-TV='curl http://localhost:32400/library/sections/5/refresh'
- alias Plex-refresh-P90X='curl http://localhost:32400/library/sections/6/refresh'
 
 # Dropbox
- alias Dbstart='sudo systemctl start dropbox@oblivious'
- alias Dbrst='sudo systemctl restart dropbox@oblivious'
- alias Dbstop='sudo systemctl stop dropbox@oblivious'
+ alias Dbstart='dropbox-cli start'
+ alias Dbstatus='dropbox-cli status'
 
 # Transmission
  alias Tranrst='sudo systemctl restart transmission'
@@ -69,17 +95,5 @@
  alias Transtart='sudo systemctl start transmission'
 # -- 
  alias Pirate='transmission-remote-cli'
-
-# Toilet
-alias 2023='toilet -f future'
-alias gaym='toilet --gay -f mono9 -t'
-alias gayf='toilet --gay -f future -t'
-alias gayt='toilet --gay -f term -t'
-alias gayp='toilet --gay -f pagga -t'
-alias metm='toilet --metal -f mono9 -t'
-alias metf='toilet --metal -f future -t'
-alias mett='toilet --metal -f term -t'
-alias metp='toilet --metal -f pagga -t'
-alias 3d='figlet -f 3d'
 
 # End

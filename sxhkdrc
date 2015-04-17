@@ -4,6 +4,9 @@
 Print
     screenshot
 
+XF86Calculator
+    Lemonpop -w
+
 XF86Audio{Prev,Next}
     ncmpcpp {prev,next}
 
@@ -14,7 +17,7 @@ XF86Audio{Raise,Lower}Volume
     amixer set Master {2dB+,2dB-}
 
 XF86AudioMute
-   amixer set Master toggle
+    amixer set Master toggle
 
 XF86Launch1
     urxvt -g 100x10 -e ncmpcpp
