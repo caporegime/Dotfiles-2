@@ -6,7 +6,7 @@
 Active="/tmp/Active.png"
 Static="/tmp/Static.png"
 Center="-gravity center -composite -matte"
-Pixel="-scale 25% -scale 400% -fill black"
+Pixel="-scale 25% -scale 400% -fill black -colorize 25%"
 Wallpaper=$(cat $HOME/.xinitrc | awk '/hsetroot/ {print $3}')
 CenterIMG="$HOME/Media/Tinalock_copy.png"
 
@@ -14,7 +14,7 @@ case $1 in
 # Active Setup
   -a|--active|--Active|-A)
   	scrot -z $Active
-	convert $Active $Pixel -colorize 25% $Active
+	convert $Active $Pixel $Active
 
   [[ -f $Center ]] 	
 	convert $Active $CenterIMG $Center $Active
@@ -29,7 +29,7 @@ case $1 in
   if [[ -f $Static ]]; then
   	echo
   else
-	convert $Wallpaper $Pixel -colorize 50% $Static
+	convert $Wallpaper $Pixel $Static
 
   [[ -f $CenterIMG ]] 
 	convert $Static $CenterIMG $Center $Static
