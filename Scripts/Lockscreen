@@ -16,7 +16,7 @@ case $1 in
   	scrot -z $Active
 	convert $Active $Pixel $Active
 
-  [[ -f $Center ]] 	
+  [[ -f $CenterIMG ]] 	
 	convert $Active $CenterIMG $Center $Active
 
 	i3lock -u -i $Active
