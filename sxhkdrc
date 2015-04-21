@@ -4,6 +4,12 @@
 Print
     screenshot
 
+Pause
+    Lockscreen -a
+
+shift + Pause
+    Lockscreen -s
+
 XF86Calculator
     Lemonpop -w
 

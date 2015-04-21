@@ -1,0 +1,54 @@
+#!/bin/sh
+# ObliviousGmn. April 2015
+# Add Keyboard shortcuts
+# i3lock - Lockscreen 
+ 
+Active="/tmp/Active.png"
+Static="/tmp/Static.png"
+Center="-gravity center -composite -matte"
+Pixel="-scale 25% -scale 400% -fill black"
+Wallpaper=$(cat $HOME/.xinitrc | awk '/hsetroot/ {print $3}')
+CenterIMG="$HOME/Media/Tinalock_copy.png"
+
+case $1 in 	
+# Active Setup
+  -a|--active|--Active|-A)
+  	scrot -z $Active
+	convert $Active $Pixel -colorize 25% $Active
+
+  [[ -f $Center ]] 	
+	convert $Active $CenterIMG $Center $Active
+
+	i3lock -u -i $Active
+	rm $Active
+	exit 0	
+  ;;
+	
+# Static setup. Wallpaper only.
+  -s|--static|--Static|-S)
+  if [[ -f $Static ]]; then
+  	echo
+  else
+	convert $Wallpaper $Pixel -colorize 50% $Static
+
+  [[ -f $CenterIMG ]] 
+	convert $Static $CenterIMG $Center $Static
+  fi
+	i3lock -u -i $Static
+	exit 0
+  ;;
+
+# Remove Static.png In case you added a new wallpaper
+ -sc|-SC)	
+	rm $Static
+ ;;	
+
+# Usage?? 
+ *|-h|--help)
+	echo
+	echo " Lockscreen [ Active -a | Static -s ] " 
+	echo 
+ ;;
+
+esac		
+# End
