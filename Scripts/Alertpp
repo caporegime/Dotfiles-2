@@ -9,31 +9,31 @@
 function Alertpp {
 
 ALERT() {
-	wristwatch=$(date +%a%I%M);
+	wristwatch=$(date +%a_%R);
 	case "$wristwatch" in	
 		
-	Tue0905|Tue0906)
+	'Tue_21:05'|'Tue_21:06')
 	        ${Beep} &	
-	        Lemonpop %{F$CYAN}  %{F-}%{F$YELLOW} Download Flash IPT!
+	        Lemonpop -l %{F$CYAN}  %{F-}%{F$YELLOW} Download Flash IPT!
 		;;
 
-	Wed0905|Tue0906)
+	'Wed_21:05'|'Wed_21:06')
  	        ${Beep} &	
-	        Lemonpop %{F$CYAN}  %{F-}%{F$YELLOW} Downlaod Arrow IPT!
+	        Lemonpop -l %{F$CYAN}  %{F-}%{F$YELLOW} Downlaod Arrow IPT!
 		;;
 
-	Wed1005|Wed1006)	
+	'Wed_22:05'|'Wed_22:06')	
  	        ${Beep} &	
-	        Lemonpop %{F$CYAN}  %{F-}%{F$YELLOW} Download Supernatural IPT!
+	        Lemonpop -l %{F$CYAN}  %{F-}%{F$YELLOW} Download Supernatural IPT!
 		;;
 
 # Really here for testing..
-#	Thu0307|Thu0310)
+#	'Wed_10:28'|'Wed_10:29')
 #	        ${Beep} &
-#	        Lemonpop %{F$CYAN}  %{F-}%{F$YELLOW} Hi, My name is popup!
+#	        Lemonpop -l %{F$CYAN}  %{F-}%{F$YELLOW} Hi, My name is popup!
 #		;;
 
-	esac
+esac
 }
 
 echo " $(ALERT) "

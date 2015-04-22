@@ -1,54 +1,62 @@
 #!/bin/sh
 # ObliviousGmn. April 2015
 # Add Keyboard shortcuts
-# i3lock - Lockscreen 
- 
+# i3lock - Lockscreen
+
 Active="/tmp/Active.png"
 Static="/tmp/Static.png"
 Center="-gravity center -composite -matte"
-Pixel="-scale 25% -scale 400% -fill black -colorize 25%"
-Wallpaper=$(cat $HOME/.xinitrc | awk '/hsetroot/ {print $3}')
+Pixel="-scale 10% -scale 1000% -fill black -colorize 25%"
+Wallpaper="$(cat $HOME/.xinitrc | awk '/hsetroot/ {print $3}')"
 CenterIMG="$HOME/Media/Tinalock_copy.png"
 
-case $1 in 	
+active(){
 # Active Setup
-  -a|--active|--Active|-A)
-  	scrot -z $Active
+
+  	scrot -q 20 -z $Active
 	convert $Active $Pixel $Active
 
-  [[ -f $CenterIMG ]] 	
+  [[ -f $CenterIMG ]]
 	convert $Active $CenterIMG $Center $Active
 
 	i3lock -u -i $Active
 	rm $Active
-	exit 0	
-  ;;
-	
+	exit 0
+}
+
+static(){
 # Static setup. Wallpaper only.
-  -s|--static|--Static|-S)
+
   if [[ -f $Static ]]; then
-  	echo
-  else
+  	echo image exist
+  else	
+	echo making image bitch
 	convert $Wallpaper $Pixel $Static
 
-  [[ -f $CenterIMG ]] 
+  [[ -f $CenterIMG ]]
 	convert $Static $CenterIMG $Center $Static
   fi
 	i3lock -u -i $Static
 	exit 0
-  ;;
+}
 
+remove(){
 # Remove Static.png In case you added a new wallpaper
- -sc|-SC)	
+
 	rm $Static
- ;;	
+}
 
-# Usage?? 
- *|-h|--help)
+usage(){
 	echo
-	echo " Lockscreen [ Active -a | Static -s ] " 
-	echo 
- ;;
+	echo " Lockscreen [ Active -a | Static -s | Clear -c ] "
+	echo
+}
 
-esac		
+case $1 in
+	-h) usage ;;
+	-a) active ;;
+	-s) static ;;
+	-c) remove ;;
+esac
+
 # End

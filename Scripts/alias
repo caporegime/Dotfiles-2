@@ -44,6 +44,7 @@
  alias ls='ls --color=auto'
  alias clear='clear && Gmnbox'
  alias Panelrst='killall lemonbar; sh $HOME/Gmnbox/Panel/panel'
+ alias rm='rm -i'
 
 # Custom
  alias Fontfix='gbdfed'

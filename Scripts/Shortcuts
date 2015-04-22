@@ -1,0 +1,80 @@
+#!/bin/bash
+# April 2015 | Obliviousgmn
+# Shortcuts - Fuctions
+# Don't judge me
+
+
+Edit() {
+	case $1 in
+		alias)		vim $HOME/Gmnbox/Bin/alias ;;
+		this|shortcut)	vim $HOME/Gmnbox/Bin/Shortcuts ;;
+		bashrc)		vim $HOME/.bashrc ;;
+		xinitrc)	vim $HOME/.xinitrc ;;
+		xdefaults)	vim $HOME/.Xdefaults ;;
+		notes)		vim $HOME/Gmnbox/Notes ;;
+		*)		echo "You should probably add it idiot!!!" ;;
+	esac
+}
+
+Conf() {
+	# For written configs
+	case $1 in
+		panel|Panel)	vim $HOME/Gmnbox/Panel/panel ;;
+		barconf|bar)	vim $HOME/Gmnbox/Panel/bar_config ;;
+		hostupd|hosts)	vim $HOME/Gmnbox/Bin/Hostupd ;;
+		backup)		vim $HOME/Gmnbox/Bin/Backup ;;
+		usbkp)		vim $HOME/Gmnbox/Bin/Usbkp ;;
+		lemonpop|popup)	vim $HOME/Gmnbox/Bin/Lemonpop ;;
+		alert)		vim $HOME/Gmnbox/Bin/Alertpp ;;
+		temp)		vim $HOME/Gmnbox/Bin/Template ;;
+		lock)		vim $HOME/Gmnbox/Bin/Lockscreen ;;
+		hotkeys|hotkey)	vim $HOME/.config/sxhkd/sxhkdrc ;;
+		*)		echo "No config by that name, Dumbass." ;;
+	esac
+}
+
+
+Peek(){
+ # Read stuff	
+ command cat $1 | less
+}
+
+Showkey(){
+ # Too lazy to type all this..	
+ command xev | grep -A2 --line-buffered '^KeyRelease' \
+	 | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'
+}
+
+Headset(){
+ case $1 in
+   on)
+   cat <<EOF1 > $HOME/.asoundrc
+    defaults.pcm.card 1
+    defaults.pcm.device 0
+    defaults.ctl.card 1
+EOF1
+;;
+
+  off)
+  cat <<EOF2 > $HOME/.asoundrc
+   defaults.pcm.card 0
+   defaults.pcm.device 0
+   defaults.ctl.card 0
+EOF2
+;;
+
+esac
+}
+
+Writedown(){
+ printf " $@ " \n >> $HOME/Gmnbox/Notes
+}
+
+Record(){
+if [ -z $1 ]; then
+   echo " Video needs a title. "
+else
+   ffmpeg -f x11grab -s 1920x1080 -r 24 -i :0.0 -q:v 0 -vcodec huffyuv $HOME/.tmp/$1.mkv
+ # ffmpeg -threads 4 -i /tmp/$1.mkv -crf 10 -b:v 3M $HOME/.tmp/$1.webm
+fi
+}
