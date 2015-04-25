@@ -67,12 +67,6 @@ MKPKG(){
   progress 68
 }
 
-WHAT(){
-  printf " test 3 "
-  rm -r $BACKTMP
-  progress 23
-}
-
 USBCHK(){
  if [ $(mount | grep -c ${USBSTK}) != 1 ]; then
    printf " Not mounted "
