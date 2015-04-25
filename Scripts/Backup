@@ -1,81 +1,121 @@
-#!/bin/bash    
-# ObliviousGmn  April 2015
-# Backups For Dropbox
+#!/bin/bash
+# Obliviousgmn
+# Backup - Save all the configs.. 
+# Usb or Dropbox..
 
 clear
-. Colors
+. Colors 
+
+# Variables 
+BKUP="Backup_$(date +%m_%Y).tar"
+DROPOFF1="$HOME/Dropbox/Backups"
+DROPOFF2="$HOME/.usbstick/Backups"
+USBSTK="$HOME/.usbstick"
+BACKTMP="Backup"
 
 # Prints Filename & Date
-printf " ${Red}${0##*/} %85s $(date +%l:%M)${Reset} \n\n" 
+printf " ${Green}${0##*/} %85s $(date +%I:%M)${Reset} \n\n"
 
-# Useless magic trick
-
-progress () {
-	 for ((i = 0; i < $1; i++)); do printf "${Black}.${Reset}"; sleep 0.02; \
-	 done; printf " ${Blue}[${Reset} COMPLETE ${Blue}]${Reset} \n" ;
+progress(){
+	for ((i = 0; i < $1; i++)); do printf "${Black}.${Reset}"; sleep 0.02; \
+		done; printf " ${Blue}[${Reset} COMPLETE ${Blue}]${Reset} \n" ;
 }
 
-# Shortcuts
- Bkup="Backup_$(date +%m_%Y).tar"
- Dropoff="$HOME/Dropbox/Backups"
+MKDIRS(){
+  printf "  Organizing Files "
+  mkdir $BACKTMP
+  mkdir $BACKTMP/Home
+  mkdir $BACKTMP/Config
+  mkdir $BACKTMP/Ncmpcpp
+  mkdir $BACKTMP/Weechat
+  mkdir $BACKTMP/Root
+  mkdir $BACKTMP/Torrent
+  mkdir $BACKTMP/Netctl
+  mkdir $BACKTMP/2bwm  
 
-printf "  Organizing Files " 
+  cp $HOME/.xinitrc $BACKTMP/Home
+  cp $HOME/.Xdefaults $BACKTMP/Home
+  cp $HOME/.bashrc $BACKTMP/Home
+  cp -ar $HOME/.fonts $BACKTMP/Home
+  
+  cp /etc/vimrc $BACKTMP/Root
+  cp /etc/hosts.local $BACKTMP/Root
+  cp /etc/netctl/Gmnbox $BACKTMP/Netctl
 
-# Add Folders to make it neater
- mkdir Backup
- mkdir Backup/Home
- mkdir Backup/Config
- mkdir Backup/Ncmpcpp
- mkdir Backup/Weechat
- mkdir Backup/Root
- mkdir Backup/Torrent
- mkdir Backup/Netctl
- mkdir Backup/2bwm
+  cp -ar $HOME/Gmnbox $BACKTMP
+  cp -ar $HOME/.config/luakit $BACKTMP/Config
+  cp -ar $HOME/.config/ranger $BACKTMP/Config
+  cp -ar $HOME/.config/htop $BACKTMP/Config
+  cp -ar $HOME/.config/youtube-viewer $BACKTMP/Config 
+  cp -ar $HOME/.config/sxhkd $BACKTMP/Config
 
-# Home dot files
- cp $HOME/.xinitrc Backup/Home
- cp $HOME/.Xdefaults Backup/Home
- cp $HOME/.bashrc Backup/Home
- cp -ar $HOME/.fonts Backup/Home
+  cp -ar $HOME/.config/mpd $BACKTMP/Ncmpcpp
+  cp -ar $HOME/Media/Music/Radio $BACKTMP/Ncmpcpp
+  cp $HOME/.ncmpcpp/config $BACKTMP/Ncmpcpp
+  
+  cp $HOME/.config/transmission-daemon/settings.json $BACKTMP/Torrent
+  cp $HOME/.weechat/weechat.conf $BACKTMP/Weechat
+  cp $HOME/.weechat/irc.conf $BACKTMP/Weechat
+  cp $HOME/.local/share/luakit/bookmarks.db $BACKTMP/Config/luakit
+  cp $HOME/.Source/2bwm/config.h $BACKTMP/2bwm 
+  progress 66
+}
 
-# Root Files
- cp /etc/vimrc Backup/Root
- cp /etc/hosts.local Backup/Root
- cp /etc/netctl/Gmnbox Backup/Netctl
+MKPKG(){
+  printf "  Zipping Folder "
+  tar cf $BKUP $BACKTMP;
+  progress 68
+}
 
-# Configs
- cp -ar $HOME/Gmnbox Backup
- cp -ar $HOME/.config/luakit Backup/Config
- cp -ar $HOME/.config/openbox Backup/Config
- cp -ar $HOME/.config/ranger Backup/Config
- cp -ar $HOME/.config/tint2 Backup/Config
- cp -ar $HOME/.config/htop Backup/Config
- cp -ar $HOME/.config/youtube-viewer Backup/Config
-# -- 
- cp -ar $HOME/Media/Music/Radio Backup/Ncmpcpp
-# --
- cp $HOME/.ncmpcpp/config Backup/Ncmpcpp
- cp $HOME/.config/transmission-daemon/settings.json Backup/Torrent
- cp $HOME/.weechat/weechat.conf Backup/Weechat
- cp $HOME/.weechat/irc.conf Backup/Weechat
- cp $HOME/.local/share/luakit/bookmarks.db Backup/Config/luakit
- cp $HOME/.Source/2bwm/config.h Backup/2bwm
-progress 66
+WHAT(){
+  printf " test 3 "
+  rm -r $BACKTMP
+  progress 23
+}
 
-# The Action
+USBCHK(){
+ if [ $(mount | grep -c ${USBSTK}) != 1 ]; then
+   printf " Not mounted "
+   echo
+   exit 0
+   fi	   
+}
 
-printf "  Zipping Folder " 
+DROPDB(){
+  printf "  Cleaning up "
+  mv $BKUP $DROPOFF1
+  rm -r $BACKTMP
+  progress 71
+  echo
+}
 
- tar cf ${Bkup} Backup;
+DROPUSB(){
+  printf "  Cleaning up "
+  mv $BKUP $DROPOFF2
+  rm -r $BACKTMP
+  progress 71
+  echo
+}
 
-progress 68
+USAGE(){
+  echo " Backup [ -u Usb | -d Dropbox ] "
+  echo
+}
 
-printf "  Cleaning up " 
+case $1 in
 
- rm -r Backup/
- mv ${Bkup} ${Dropoff};
+  -u|usb|USB) 
+	USBCHK
+	MKDIRS
+	MKPKG 
+	DROPUSB ;;
 
-progress 71
-echo
+  -d|dropbox) 
+	MKDIRS
+    	MKPKG
+	DROPDB ;;
 
-# End of File
+  *) 
+	USAGE ;;
+esac
+
