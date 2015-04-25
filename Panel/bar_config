@@ -1,6 +1,8 @@
 #!/bin/bash
-# April 2015
-# Panel Settings
+
+# ObliviousGmn, April 2015
+# https://github.com/ObliviousGmn
+# Lemonbar Configs.. 
 
 # Color directory
 CD="$HOME/Gmnbox/Colors/Reborn"
@@ -11,8 +13,8 @@ FONT2="-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"
 FONT3="-lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1"
 
 # Bedtime
-ZZZ=16
-zzz=6
+ZZZ=12
+zzz=4
 
 # Panel 
 PW=1900

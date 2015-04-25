@@ -1,6 +1,8 @@
 #!/bin/bash
-#
-# Get X Color
+
+# ObliviousGmn, April 2015
+# https://github.com/ObliviousGmn
+# Xcolors - ???
 
 [[ -z "$2" ]] && exit
 

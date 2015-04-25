@@ -1,6 +1,9 @@
-#!/bin/bash
-# ObliviousGmn | github.com/ObliviousGmn
-# To make my Terminals look pretty.
+#!/bin/sh
+
+# ObliviousGmn, April 2015
+# https://github.com/ObliviousGmn
+# Header for my Terminal.. 
+
 . Colors
 
 RN="$(whoami | sed -e 's/\b\(.\)/\u\1/g')"

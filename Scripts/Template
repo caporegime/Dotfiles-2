@@ -1,6 +1,8 @@
 #!/bin/sh
-# Template
-# Make little tasks more fun? I guess.
+
+# ObliviousGmn, April 2015
+# https://github.com/ObliviousGmn
+# Template - Pretty tasks 
 
 . Colors
 clear

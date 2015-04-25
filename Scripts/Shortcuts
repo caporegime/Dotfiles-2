@@ -1,34 +1,27 @@
 #!/bin/bash
-# April 2015 | Obliviousgmn
-# Shortcuts - Fuctions
-# Don't judge me
 
-
-Edit() {
-	case $1 in
-		alias)		vim $HOME/Gmnbox/Bin/alias ;;
-		this|shortcut)	vim $HOME/Gmnbox/Bin/Shortcuts ;;
-		bashrc)		vim $HOME/.bashrc ;;
-		xinitrc)	vim $HOME/.xinitrc ;;
-		xdefaults)	vim $HOME/.Xdefaults ;;
-		notes)		vim $HOME/Gmnbox/Notes ;;
-		*)		echo "You should probably add it idiot!!!" ;;
-	esac
-}
+# ObliviousGmn, April 2015
+# https://github.com/ObliviousGmn
+# Shortcuts - Fuctions - Don't judge me
 
 Conf() {
 	# For written configs
 	case $1 in
-		panel|Panel)	vim $HOME/Gmnbox/Panel/panel ;;
-		barconf|bar)	vim $HOME/Gmnbox/Panel/bar_config ;;
-		hostupd|hosts)	vim $HOME/Gmnbox/Bin/Hostupd ;;
-		backup)		vim $HOME/Gmnbox/Bin/Backup ;;
-		usbkp)		vim $HOME/Gmnbox/Bin/Usbkp ;;
-		lemonpop|popup)	vim $HOME/Gmnbox/Bin/Lemonpop ;;
-		alert)		vim $HOME/Gmnbox/Bin/Alertpp ;;
-		temp)		vim $HOME/Gmnbox/Bin/Template ;;
-		lock)		vim $HOME/Gmnbox/Bin/Lockscreen ;;
-		hotkeys|hotkey)	vim $HOME/.config/sxhkd/sxhkdrc ;;
+		panel|Panel)	$EDITOR $HOME/Gmnbox/Panel/panel ;;
+		barconf|bar)	$EDITOR $HOME/Gmnbox/Panel/bar_config ;;
+		hostupd|hosts)	$EDITOR $HOME/Gmnbox/Bin/Hostupd ;;
+		backup)		$EDITOR $HOME/Gmnbox/Bin/Backup ;;
+		lemonpop|popup)	$EDITOR $HOME/Gmnbox/Bin/Lemonpop ;;
+		alert)		$EDITOR $HOME/Gmnbox/Bin/Alertpp ;;
+		temp)		$EDITOR $HOME/Gmnbox/Bin/Template ;;
+		lock)		$EDITOR $HOME/Gmnbox/Bin/Lockscreen ;;
+		head)		$EDITOR $HOME/Gmnbox/Bin/Gmnbox ;;
+		alias)		$EDITOR $HOME/Gmnbox/Bin/alias ;;
+		this|shortcut)	$EDITOR $HOME/Gmnbox/Bin/Shortcuts ;;
+		hotkeys|hotkey)	$EDITOR $HOME/.config/sxhkd/sxhkdrc ;;
+		bashrc)		$EDITOR $HOME/.bashrc ;;
+		xdefaults)	$EDITOR $HOME/.Xdefaults ;;
+		xinitrc)	$EDITOR $HOME/.xinitrc ;;
 		*)		echo "No config by that name, Dumbass." ;;
 	esac
 }
@@ -46,6 +39,7 @@ Showkey(){
 }
 
 Headset(){
+ # Switch headset for default
  case $1 in
    on)
    cat <<EOF1 > $HOME/.asoundrc
@@ -67,10 +61,12 @@ esac
 }
 
 Writedown(){
+ # Quick Notepad
  printf " $@ " \n >> $HOME/Gmnbox/Notes
 }
 
 Record(){
+# Record desktop
 if [ -z $1 ]; then
    echo " Video needs a title. "
 else
@@ -78,3 +74,5 @@ else
  # ffmpeg -threads 4 -i /tmp/$1.mkv -crf 10 -b:v 3M $HOME/.tmp/$1.webm
 fi
 }
+
+

@@ -1,4 +1,5 @@
-# ObliviousGmn
+# ObliviousGmn. April 2015
+# https://github.com/ObliviousGmn
 # Xdefaults 
  
 #include "/home/oblivious/Gmnbox/Colors/Reborn"
@@ -14,10 +15,11 @@
  *boldFont:	xft:gmnterm
 
  *scrollBar: 	false
- *geometry:   	100x8
+ *geometry:   	100x10
  *cursorBlink: 	true
  *cursorUnderline: true
  *internalBorder: 6
  *perl-ext-common: default,matcher
  *url-launcher: /usr/bin/luakit
  *matcher.button: 1
+

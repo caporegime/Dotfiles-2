@@ -1,7 +1,8 @@
 #!/bin/bash
-# ObliviousGmn | github.com/ObliviousGmn
-# June 2014
-# Dzen Left Side
+
+# ObliviousGmn, June 2014
+# https://github.com/ObliviousGmn
+# Zenbash - Left side.. 
 
 # Source
 . $HOME/Zenbash/Settings   

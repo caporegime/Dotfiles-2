@@ -1,6 +1,9 @@
-# Xinitrc
-# ObliviousGmn | April 2015
-# Startup
+# ObliviouGmn, April 2015
+# https://github.com/ObliviousGmn
+# Xinitrc 
+
+# Graphics card is way too bright by default 
+ xrandr --output VGA1 --brightness 0.95 &
 
 # Torrent alert loop 
  while :; do Alertpp; sleep 30; done &
@@ -16,7 +19,7 @@
  xset fp rehash
 
 # Wall & Docks
- hsetroot -fill /home/oblivious/Downloads/wallhaven-138315-noise.jpg -tint '#BFBFBF'
+ hsetroot -fill /home/oblivious/Downloads/wallhaven-138315-noise.jpg -tint '#E6E6E6'
  $HOME/Gmnbox/Panel/panel & 
 
 # Shadow

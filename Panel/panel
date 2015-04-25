@@ -1,19 +1,16 @@
 #!/bin/bash
-# Lemonbar Setup 
-# April 2015
+
+# ObliviousGmn, April 2015
+# https://github.com/ObliviousGmn
+# Panel for Lemonbar..
 
 . $HOME/Gmnbox/Panel/bar_config
-
 
  ws() {
   ws=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
 	echo "${ws}"
 }
 
- weather(){
- 	weather=$(Weather 10039)
-	echo "${weather}"
-}
  menu() {
 	echo "%{B$BLUE}%{F$BG} GMN  %{B-}%{F-}"
 }
@@ -45,15 +42,14 @@
  else
 	echo
  fi
- return 
 }
 	
  netstate() {
   test -n "`ip route`" && echo "Connected" || echo "Disconnected"
 }
 
-while true 
- do 	
+
+while :; do 	
 	 echo " $(ws) $(menu) $(vol) %{c}$(mus) %{r}$(temp) $(fan) $(clock) "
          sleep 0.5	
  done | lemonbar -g ${PW}x${PH}+${PX}+${PY} -f "$FONT1","$FONT2" -B "$BG" -F "$FG" -p & 

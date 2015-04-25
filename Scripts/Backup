@@ -1,7 +1,8 @@
 #!/bin/bash
-# Obliviousgmn
-# Backup - Save all the configs.. 
-# Usb or Dropbox..
+
+# Obliviousgmn, April 2015
+# https://github.com/ObliviousGmn
+# Backup - Dropbox - Usb 
 
 clear
 . Colors 

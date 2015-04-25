@@ -1,6 +1,8 @@
 #!/bin/sh
+
 # ObliviousGmn, April 2015
-# takes a screenshot with a lame ass sound effect -_-
+# https://github.com/ObliviousGmn
+# Screenshot popup 
 
 . $HOME/Gmnbox/Panel/bar_config
 

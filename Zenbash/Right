@@ -1,8 +1,8 @@
 #!/bin/bash
-# ObliviousGmn | github.com/ObliviousGmn
-# June 2014
-# Add/Change your Zip in Weather!
-# Dzen Right Side
+
+# ObliviousGmn, June 2014
+# https://github.com/ObliviousGmn
+# Zenbash - Right side
 
 # Source
 . $HOME/Zenbash/Settings   
