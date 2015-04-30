@@ -50,7 +50,7 @@ MKDIRS(){
   cp -ar $HOME/.config/youtube-viewer $BACKTMP/Config 
   cp -ar $HOME/.config/sxhkd $BACKTMP/Config
 
-  cp -ar $HOME/.config/mpd $BACKTMP/Ncmpcpp
+  cp $HOME/.config/mpd/mpd.conf $BACKTMP/Ncmpcpp
   cp -ar $HOME/Media/Music/Radio $BACKTMP/Ncmpcpp
   cp $HOME/.ncmpcpp/config $BACKTMP/Ncmpcpp
   
