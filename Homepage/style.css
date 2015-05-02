@@ -1,6 +1,6 @@
-html, body{
-	background-image: url('http://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-14612.jpg');
-	background-position: center;
+body {
+	background-image: url('http://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-196575.jpg');
+	background-size: cover;
 }
 
 * {
@@ -23,75 +23,73 @@ html, body{
 
 #header {
     -webkit-box-shadow: 0px 0px 2px 0px #000;
-    -moz-box-shadow: 0px 0px 2px 0px #000;
-    box-shadow: 0px 0px 2px 0px #000;
+       -moz-box-shadow: 0px 0px 2px 0px #000;
+            box-shadow: 0px 0px 2px 0px #000;
+
 	border: 1px solid rgba(0,0,0,0.5);
 	border-radius:2px;
 	background-color: rgba(0,0,0,0.8);
-	margin: 0.5%;
-	padding: 1%;
+	margin: 4px;
+	padding: 8px;
 }
 
 
 #links {
-	display: -moz-box;
 	display: -webkit-box;
+  	   display: -moz-box;
+
 	width: 100%;
 }
 
 .linksbox {
     -webkit-box-shadow: 0px 0px 2px 0px #000;
-    -moz-box-shadow: 0px 0px 2px 0px #000;
-    box-shadow: 0px 0px 2px 0px #000;
-    -moz-box-flex: 1;	
-	-webkit-box-flex: 1;
-	margin: 0.5%;
+       -moz-box-shadow: 0px 0px 2px 0px #000;
+ 	        box-shadow: 0px 0px 2px 0px #000;
+
+    -webkit-box-flex: 1;
+       -moz-box-flex: 1;
+
+	margin: 4px;
 	padding: 8px 8px 8px 8px;
 	background-color: rgba(0,0,0,0.8);
 	border: 1px solid rgba(0,0,0,0.5);
 	border-radius:2px;
 }
 
-.linksbox a{
+.linksbox a {
 	display: block;
 	color: #6673BF;
 }
 
 h3 {
 	font-size: 14px;
-	margin-bottom: 2%;
+	margin-bottom: 2px;
 	margin-top: 0;
-}
-
-a{
-font-size: 12px;
-text-decoration: none;
-margin-left: 2px;
-margin-bottom: 0.5%;
-}
-
-a:link{
-color: rgba(255,255,255,0.3);
-}
-
-a:visited{
-color: rgba(255,255,255,0.3);
-}
-
-a:hover{
-color: rgba(255,255,255,0.45);
-}
-
-.green {
 	padding: 0;
 	color: rgba(255,255,255,0.45);
 }
+
+a {
+	font-size: 12px;
+	text-decoration: none;
+	margin-left: 2px;
+	margin-bottom: 0.5%;
+}
+
+a:link, a:visited {
+	color: rgba(255,255,255,0.3);
+} 
+
+a:hover { 
+	color: rgba(255,255,255,0.45);
+}
+
 
 form {
 	display: inline;
 }
 
-input 	{
+input {
 	display: inline;
 	text-align: left;
 	margin-left: 6%;
@@ -103,5 +101,5 @@ input 	{
 	color: #fff;
 	height: 4%;
 	width: 88%;
-	font-size: 10px;
+	font-size: 11px;
 }
