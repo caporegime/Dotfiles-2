@@ -2,30 +2,30 @@
 
 # ObliviousGmn, April 2015
 # https://github.com/ObliviousGmn
-# Shortcuts - Fuctions - Don't judge me
+# Shortcuts - Don't judge me
 
 Conf() {
-	# For written configs
-	case $1 in
-		panel|Panel)	$EDITOR $HOME/Gmnbox/Panel/panel ;;
-		barconf|bar)	$EDITOR $HOME/Gmnbox/Panel/bar_config ;;
-		hostupd|hosts)	$EDITOR $HOME/Gmnbox/Bin/Hostupd ;;
-		backup)		$EDITOR $HOME/Gmnbox/Bin/Backup ;;
-		lemonpop|popup)	$EDITOR $HOME/Gmnbox/Bin/Lemonpop ;;
-		alert)		$EDITOR $HOME/Gmnbox/Bin/Alertpp ;;
-		temp)		$EDITOR $HOME/Gmnbox/Bin/Template ;;
-		lock)		$EDITOR $HOME/Gmnbox/Bin/Lockscreen ;;
-		head)		$EDITOR $HOME/Gmnbox/Bin/Gmnbox ;;
-		alias)		$EDITOR $HOME/Gmnbox/Bin/alias ;;
-		this|shortcut)	$EDITOR $HOME/Gmnbox/Bin/Shortcuts ;;
-		hotkeys|hotkey)	$EDITOR $HOME/.config/sxhkd/sxhkdrc ;;
-		bashrc)		$EDITOR $HOME/.bashrc ;;
-		xdefaults)	$EDITOR $HOME/.Xdefaults ;;
-		xinitrc)	$EDITOR $HOME/.xinitrc ;;
-		*)		echo "No config by that name, Dumbass." ;;
-	esac
+ # For written configs
+ case $1 in
+	panel|Panel)	$EDITOR $HOME/Gmnbox/Panel/panel ;;
+	barconf|bar)	$EDITOR $HOME/Gmnbox/Panel/bar_config ;;
+	hostupd|hosts)	$EDITOR $HOME/Gmnbox/Bin/Hostupd ;;
+	backup)		$EDITOR $HOME/Gmnbox/Bin/Backup ;;
+	lemonpop|popup)	$EDITOR $HOME/Gmnbox/Bin/Lemonpop ;;
+	alert)		$EDITOR $HOME/Gmnbox/Bin/Alertpp ;;
+	temp)		$EDITOR $HOME/Gmnbox/Bin/Template ;;
+	lock)		$EDITOR $HOME/Gmnbox/Bin/Lockscreen ;;
+	head)		$EDITOR $HOME/Gmnbox/Bin/Gmnbox ;;
+	alias)		$EDITOR $HOME/Gmnbox/Bin/alias ;;
+	this|shortcut)	$EDITOR $HOME/Gmnbox/Bin/Shortcuts ;;
+	hotkeys|hotkey)	$EDITOR $HOME/.config/sxhkd/sxhkdrc ;;
+	bashrc)		$EDITOR $HOME/.bashrc ;;
+	xd|setup)	$EDITOR $HOME/.Xdefaults ;;
+	xinitrc|start)	$EDITOR $HOME/.xinitrc ;;
+	bin)		$EDITOR $HOME/Gmnbox/Bin/$2 ;;
+	*)		echo "No config by that name, Dumbass." ;;
+ esac
 }
-
 
 Peek(){
  # Read stuff	
@@ -71,8 +71,7 @@ if [ -z $1 ]; then
    echo " Video needs a title. "
 else
    ffmpeg -f x11grab -s 1920x1080 -r 24 -i :0.0 -q:v 0 -vcodec huffyuv $HOME/.tmp/$1.mkv
- # ffmpeg -threads 4 -i /tmp/$1.mkv -crf 10 -b:v 3M $HOME/.tmp/$1.webm
+   #ffmpeg -threads 4 -i $HOME/.tmp/$1.mkv -crf 10 -b:v 3M $HOME/.tmp/$1.webm
 fi
 }
-
 

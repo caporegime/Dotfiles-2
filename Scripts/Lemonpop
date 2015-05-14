@@ -1,12 +1,12 @@
 #!/bin/sh
 
-# Obliviousgmn, April 2015
+# Obliviousgmn, May 2015
 # https://github.com/ObliviousGmn
 # Lemonpop, Lemon scented popup bar.
 # Thanks to z3bra for the idea!
 
 . $HOME/Gmnbox/Panel/bar_config
-Setup="-g ${LW}x${LH}+${LX}+${LY} -f ${FONT1},${FONT2} -B ${BG} -F ${FG}"
+Setup="-g ${LW}x${LH}+${LX}+${LY} -f ${FONT1},${FONT2},${FONT4} -B ${BG} -F ${FG}"
 Click="while read line; do eval "$line"; done"
 
 # The Action
@@ -25,6 +25,11 @@ case $1 in
 	-w) # Quick weather ..
 	shift	
 	(echo -e "%{F$CYAN}%{c}  %{F-}%{F$YELLOW} $(Weather 10039) "; sleep ${zzz}) | lemonbar ${Setup} &
+	;;
+
+	-p) # Plex, I'm lazy..
+	shift
+	(echo -e "%{F$CYAN}%{c}  %{F-}%{F$YELLOW}Plex $@ "; sleep ${zzz}) | lemonbar ${Setup} &
 	;;
 
 	*) # Default option ..

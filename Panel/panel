@@ -12,17 +12,17 @@
 }
 
  menu(){
-	echo "%{B$BLUE}%{F$BG} GMN  %{B-}%{F-}"
+	echo "%{B$BLUE}%{F$BG} GMN  %{B-}%{F-}"
 }
 
  temp(){
   temp=$(sensors | awk '/Core 0/ {print +$3}')
-	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${temp}"
+	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${temp}°"
 }
 	
  fan(){
-  fan=$(sensors | awk '/fan1/ {print +$2}')
-	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${fan} RPM"
+  fan=$(sensors | awk '/fan1/ {print $2,$3}')
+	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${fan}"
 }
 
  clock(){
@@ -31,13 +31,16 @@
 }
 
  vol(){
-  vol=$(amixer get Master | awk '/Mono:/ {print $4}' | tr -d '[]%,')
   switch=$(amixer get Master | awk '/Mono:/ {print $6}')
+  vol=$(amixer get Master | awk '/Mono:/ {print $4}' | tr -d '[]%,')
+  hsvol=$(amixer get PCM | awk '/Mono:/ {print $4}' | tr -d '[]%,')
 
   if [ "$switch" = "[on]" ]; then
 	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${vol}"
-  else
+  elif [ "$switch" = "[off]" ]; then
 	echo "%{F$RED}  %{F-}%{F$YELLOW} MUTE"
+  else
+	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${hsvol} "
   fi
 }
 
@@ -51,12 +54,12 @@
  fi
 }
 
-# netstate(){
+# net(){
 #  test -n "`ip route`" && echo "Connected" || echo "Disconnected"
 #}
 
 while :; do 	
 	 echo " $(ws) $(menu) $(vol) %{c}$(mus) %{r}$(temp) $(fan) $(clock) "
          sleep 0.5	
- done | lemonbar -g ${PW}x${PH}+${PX}+${PY} -f "$FONT1","$FONT2" -B "$BG" -F "$FG" -p & 
+done | lemonbar -g ${PW}x${PH}+${PX}+${PY} -f "$FONT1","$FONT2","$FONT4" -B "$BG" -F "$FG" -p & 
 

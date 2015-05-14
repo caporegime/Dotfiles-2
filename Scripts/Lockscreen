@@ -17,7 +17,7 @@ active(){
   	scrot -q 20 -z $Active
 	convert $Active $Pixel $Active
 
-  [[ -f $CenterIMG ]]
+  [ -f $CenterIMG ]
 	convert $Active $CenterIMG $Center $Active
 
 	i3lock -u -i $Active
@@ -28,10 +28,9 @@ active(){
 static(){
 # Static setup. Wallpaper only.
 
-  if [[ -f $Static ]]; then
-  	echo image exist
+  if [ -f $Static ]; then
+  	echo
   else	
-	echo making image bitch
 	convert $Wallpaper $Pixel $Static
 
   [[ -f $CenterIMG ]]

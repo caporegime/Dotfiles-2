@@ -1,5 +1,6 @@
-# ObliviousGmn 
-# Alias list
+# ObliviousGmn, April 2015
+# https://github.com/ObliviousGmn 
+# Alias - Very Sloppy - Will Update
 
 # Mirrors -- In Root Only
  alias Rankup='rankmirrors -n 6 /etc/pacman.d/mirrorlist.pacnew > /etc/pacman.d/mirrorlist'
@@ -78,13 +79,13 @@
 # Systemctl Shortcuts
 
 # Plex
- alias Plex='sudo systemctl start plexmediaserver'
- alias Plexrst='sudo systemctl restart plexmediaserver'
- alias Plexstop='sudo systemctl stop plexmediaserver'
+ alias Plex='sudo systemctl start plexmediaserver; Lemonpop Starting Plex'
+ alias Plexrst='sudo systemctl restart plexmediaserver; Lemonpop Restarting Plex'
+ alias Plexstop='sudo systemctl stop plexmediaserver; Lemonpop Stopping Plex'
 
 # -- Plex library refresh
- alias Plex-refresh-Movies='curl http://localhost:32400/library/sections/8/refresh'
- alias Plex-refresh-TV='curl http://localhost:32400/library/sections/5/refresh'
+ alias Plex-refresh-Movies='curl http://localhost:32400/library/sections/8/refresh ; Lemonpop -p Refreshing Movies'
+ alias Plex-refresh-TV='curl http://localhost:32400/library/sections/5/refresh ; Lemonpop -p Refreshing TV'
 
 # Dropbox
  alias Dbstart='dropbox-cli start'

@@ -4,13 +4,11 @@
 # https://github.com/ObliviousGmn
 # Lemonbar Configs.. 
 
-# Color directory
-CD="$HOME/Gmnbox/Colors/Reborn"
-
 # Fonts
 FONT1="-*-profont-medium-*-*--12-*-*-*-*-*-*-1"
 FONT2="-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"
 FONT3="-lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1"
+FONT4="-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
 
 # Bedtime
 ZZZ=12
@@ -32,6 +30,9 @@ LY=45
 Beep="aplay -q $HOME/Gmnbox/Sounds/alarm.wav"
 Camera="aplay -q $HOME/Gmnbox/Sounds/camera.wav"
 Opps="aplay -q $HOME/Gmnbox/Sounds/opps.wav"
+
+# Color directory
+CD="$HOME/Gmnbox/Colors/Reborn"
 
 # Fetch the Colors
 BG=$(cat ${CD} | grep -i background | tail -c 8)
