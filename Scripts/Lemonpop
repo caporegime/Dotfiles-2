@@ -6,7 +6,7 @@
 # Thanks to z3bra for the idea!
 
 . $HOME/Gmnbox/Panel/bar_config
-Setup="-g ${LW}x${LH}+${LX}+${LY} -f ${FONT1},${FONT2},${FONT4} -B ${BG} -F ${FG}"
+Setup="-g ${LW}x${LH}+${LX}+${LY} -f ${FONT1} -f ${FONT2} -f ${FONT4} -B ${BG} -F ${FG}"
 Click="while read line; do eval "$line"; done"
 
 # The Action
@@ -19,7 +19,7 @@ case $1 in
 
 	-c) # Clickable option w/ long duration .. 
 	shift
-	(echo -e "%{F$YELLOW}%{c}$@"; sleep ${ZZZ}) | lemonbar ${Setup} | $(Click) &
+	(echo -e "%{F$YELLOW}%{c}$@"; sleep ${ZZZ}) | lemonbar ${Setup} | while read line; do eval "$line"; done &
 	;;
 
 	-w) # Quick weather ..

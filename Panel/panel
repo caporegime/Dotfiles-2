@@ -47,11 +47,11 @@
  mus(){
   mus=$(ncmpcpp --now-playing)
 
- if [[ $mus ]]; then
-	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${mus}"
- else
+  if [[ $mus ]]; then
+ 	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${mus}"
+  else
 	echo
- fi
+  fi
 }
 
 # net(){
@@ -61,5 +61,5 @@
 while :; do 	
 	 echo " $(ws) $(menu) $(vol) %{c}$(mus) %{r}$(temp) $(fan) $(clock) "
          sleep 0.5	
-done | lemonbar -g ${PW}x${PH}+${PX}+${PY} -f "$FONT1","$FONT2","$FONT4" -B "$BG" -F "$FG" -p & 
+done | lemonbar -g ${PW}x${PH}+${PX}+${PY} -f "$FONT1" -f "$FONT4" -B "$BG" -F "$FG" -p & 
 
