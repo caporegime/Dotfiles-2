@@ -54,12 +54,17 @@
   fi
 }
 
+click(){
+	echo "%{A:sh $HOME/menu:} test %{A}"
+}
+
 # net(){
 #  test -n "`ip route`" && echo "Connected" || echo "Disconnected"
 #}
 
 while :; do 	
-	 echo " $(ws) $(menu) $(vol) %{c}$(mus) %{r}$(temp) $(fan) $(clock) "
+	echo " $(ws) $(menu) $(vol) %{c}$(mus) %{r}$(temp) $(fan) $(clock) "
          sleep 0.5	
-done | lemonbar -g ${PW}x${PH}+${PX}+${PY} -f "$FONT1" -f "$FONT4" -B "$BG" -F "$FG" -p & 
+done | lemonbar -g ${PW}x${PH}+${PX}+${PY} -f "$FONT1" -f "$FONT4" -B "$BG" -F "$FG" -d -p | \
+	while read line; do eval "$line"; done &
 
