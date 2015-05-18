@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Obliviousgmn, April 2015
+# Obliviousgmn, May 2015
 # https://github.com/ObliviousGmn
 # Backup - Dropbox - Usb 
 
@@ -32,6 +32,7 @@ MKDIRS(){
   mkdir $BACKTMP/Root
   mkdir $BACKTMP/Torrent
   mkdir $BACKTMP/Netctl
+  mkdir $BACKTMP/Pacman
   mkdir $BACKTMP/2bwm  
 
   cp $HOME/.xinitrc $BACKTMP/Home
@@ -42,6 +43,7 @@ MKDIRS(){
   cp /etc/vimrc $BACKTMP/Root
   cp /etc/hosts.local $BACKTMP/Root
   cp /etc/netctl/Gmnbox $BACKTMP/Netctl
+  cp /etc/pacman.conf $BACKTMP/Pacman
 
   cp -ar $HOME/Gmnbox $BACKTMP
   cp -ar $HOME/.config/luakit $BACKTMP/Config
@@ -70,10 +72,21 @@ MKPKG(){
 
 USBCHK(){
  if [ $(mount | grep -c ${USBSTK}) != 1 ]; then
-   printf " Not mounted "
+   printf "  Not mounted "
+   echo
+   echo
+   exit 0 
+ fi	   
+}
+
+DROPCHK(){
+ drop=$(dropbox-cli status)
+ if [[ $drop = "Dropbox isn't running!" ]]; then
+   printf " Dropbox isn't running "
+   echo
    echo
    exit 0
-   fi	   
+ fi
 }
 
 DROPDB(){
@@ -106,6 +119,7 @@ case $1 in
 	DROPUSB ;;
 
   -d|dropbox) 
+	DROPCHK  
 	MKDIRS
     	MKPKG
 	DROPDB ;;
@@ -113,4 +127,3 @@ case $1 in
   *) 
 	USAGE ;;
 esac
-
