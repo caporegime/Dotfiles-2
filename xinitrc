@@ -19,7 +19,7 @@
  xset fp rehash
 
 # Wall & Docks
- hsetroot -fill /home/oblivious/Downloads/wallhaven-138315-noise.jpg -tint '#E6E6E6'
+ hsetroot -fill /home/oblivious/Media/Walls/Grasslady.jpg -tint '#CCCCCC'
  $HOME/Gmnbox/Panel/panel & 
 
 # Shadow

@@ -2,7 +2,7 @@
 # https://github.com/ObliviousGmn
 # Bashrc
 
-export PATH=$PATH:/home/oblivious/Gmnbox/Bin
+export PATH=$PATH:/home/oblivious/Gmnbox/Scripts
 export EDITOR=vim
 export BROWSER=luakit
 export PAGER=/usr/local/bin/vimpager
