@@ -3,48 +3,45 @@
 # Obliviousgmn, May 2015
 # https://github.com/ObliviousGmn
 # Lemonpop, Lemon scented popup bar.
-# Thanks to z3bra for the idea!
+# Version 0.5.0 
 
 . $HOME/Gmnbox/Panel/bar_config
-Setup="-g ${LW}x${LH}+${LX}+${LY} -f ${FONT1} -f ${FONT2} -f ${FONT4} -B ${BG} -F ${FG} -d"
-Click="while read line; do eval "$line"; done"
+POPW="$(($(echo "  $@ " | wc -m) * 6))"
+POPL="$((1910 - POPW))"
+Setup1="-g ${LW}x${LH}+${LX}+${LY} -f ${FONT1} -f ${FONT2} -f ${FONT4} -B ${BG} -F ${FG} -d"
+Setup2="-g ${POPW}x${LH}+${POPL}+${LY} -f ${FONT1} -f ${FONT2} -B ${BG} -F ${FG} -d"
 
 # The Action
 case $1 in
 
 	-l) # Longer duration option ..
 	shift
-	(echo -e "%{F$YELLOW}%{c}$@"; sleep ${ZZZ}) | lemonbar ${Setup} & 
+	(echo -e "%{F$YELLOW}%{c}$@"; sleep ${ZZZ}) | lemonbar ${Setup1} & 
 	;;
 
 	-c) # Clickable option w/ long duration .. 
 	shift
-	(echo -e "%{F$YELLOW}%{c}$@"; sleep ${ZZZ}) | lemonbar ${Setup} | while read line; do eval "$line"; done &
+	(echo -e "%{F$YELLOW}%{c}$@"; sleep ${ZZZ}) | lemonbar ${Setup1} | while read line; do eval "$line"; done &
 	;;
 
 	-w) # Quick weather ..
 	shift	
-	(echo -e "%{F$CYAN}%{c}  %{F-}%{F$YELLOW} $(Weather 10039) "; sleep ${zzz}) | lemonbar ${Setup} &
+	(echo -e "%{F$CYAN}%{c}  %{F-}%{F$YELLOW} $(Weather 10039) "; sleep ${zzz}) | lemonbar ${Setup1} &
 	;;
 
 	-p) # Plex, I'm lazy..
 	shift
-	(echo -e "%{F$CYAN}%{c}  %{F-}%{F$YELLOW}Plex $@ "; sleep ${zzz}) | lemonbar ${Setup} &
+	(echo -e "%{F$CYAN}%{c}  %{F-}%{F$YELLOW}Plex $@ "; sleep ${zzz}) | lemonbar ${Setup1} &
 	;;
 
 	-wee) # Weechat notify ..
-
-	 ${Whacha} &
-	 POPW="$(($(echo "  $@ " | wc -m) * 6))"
-	 POPL="$((1910 - POPW))"
-
+	# ${Whacha} &
 	shift
-	(echo -e "%{F$CYAN}%{c}%{F-}%{F$YELLOW} $@"; sleep 8) | 
-	lemonbar -g ${POPW}x${LH}+${POPL}+${LY} -f $FONT1 -f $FONT2 -B $BG -F $FG &
+	(echo -e "%{F$CYAN}%{c}%{F-}%{F$YELLOW} $@"; sleep 8) | lemonbar ${Setup2} &
 	;;
 
 	*) # Default option ..
-	(echo -e "%{F$YELLOW}%{c}$@"; sleep ${zzz}) | lemonbar ${Setup} &
+	(echo -e "%{F$YELLOW}%{c}$@"; sleep ${zzz}) | lemonbar ${Setup2} &
 	;;
 
 esac
