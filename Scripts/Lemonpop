@@ -3,13 +3,18 @@
 # Obliviousgmn, May 2015
 # https://github.com/ObliviousGmn
 # Lemonpop, Lemon scented popup bar.
-# Version 0.5.0 
+# Version 0.5.1
 
 . $HOME/Gmnbox/Panel/bar_config
+
+# Not the cleanest way but it works.
+pkill -f -n "LMP"
+
 POPW="$(($(echo "  $@ " | wc -m) * 6))"
 POPL="$((1910 - POPW))"
-Setup1="-g ${LW}x${LH}+${LX}+${LY} -f ${FONT1} -f ${FONT2} -f ${FONT4} -B ${BG} -F ${FG} -d"
-Setup2="-g ${POPW}x${LH}+${POPL}+${LY} -f ${FONT1} -f ${FONT2} -B ${BG} -F ${FG} -d"
+Setup1="-g ${LW}x${LH}+${LX}+${LY} -f ${FONT1} -f ${FONT2} -f ${FONT4} -B ${BG} -F ${FG} -d LMP"
+Setup2="-g ${POPW}x${LH}+${POPL}+${LY} -f ${FONT1} -f ${FONT2} -B ${BG} -F ${FG} -d LMP"
+
 
 # The Action
 case $1 in
@@ -35,7 +40,7 @@ case $1 in
 	;;
 
 	-wee) # Weechat notify ..
-	# ${Whacha} &
+	${Whacha} &
 	shift
 	(echo -e "%{F$CYAN}%{c}%{F-}%{F$YELLOW} $@"; sleep 8) | lemonbar ${Setup2} &
 	;;
