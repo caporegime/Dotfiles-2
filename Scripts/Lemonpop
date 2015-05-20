@@ -33,14 +33,14 @@ case $1 in
 	;;
 
 	-wee) # Weechat notify ..
-	aplay -q $HOME/Gmnbox/Sounds/alarm.wav & 
 
+	 ${Whacha} &
 	 POPW="$(($(echo "  $@ " | wc -m) * 6))"
 	 POPL="$((1910 - POPW))"
 
 	shift
-	(echo -e "%{F$CYAN}%{c}%{F-}%{F$YELLOW} $@"; sleep 6) | 
-	lemonbar -g ${POPW}x${LH}+${POPL}+${LY} -f $FONT1 -f $FONT2 -f $FONT4 -B $BG -F $FG &
+	(echo -e "%{F$CYAN}%{c}%{F-}%{F$YELLOW} $@"; sleep 8) | 
+	lemonbar -g ${POPW}x${LH}+${POPL}+${LY} -f $FONT1 -f $FONT2 -B $BG -F $FG &
 	;;
 
 	*) # Default option ..
