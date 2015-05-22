@@ -12,7 +12,7 @@ set showcmd
 set incsearch
 set hlsearch
 set nocompatible
-set t_Co=16 						" use 256 colours
+set t_Co=256 						" use 256 colours
 set ignorecase					" ignore case when searching
 set background=dark
 set cursorline
