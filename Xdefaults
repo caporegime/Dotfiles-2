@@ -1,4 +1,4 @@
-# ObliviousGmn. April 2015
+# ObliviousGmn. May 2015
 # https://github.com/ObliviousGmn
 # Xdefaults 
  
@@ -11,7 +11,7 @@
  *geometry:   	100x10
  *cursorBlink: 	true
  *cursorUnderline: true
- *internalBorder: 6
+ *internalBorder: 5
  *perl-ext-common: default,matcher
  *url-launcher: /usr/bin/luakit
  *matcher.button: 1

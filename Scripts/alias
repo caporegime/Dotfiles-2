@@ -1,4 +1,4 @@
-# ObliviousGmn, April 2015
+# ObliviousGmn, May 2015
 # https://github.com/ObliviousGmn 
 # Alias - Very Sloppy - Will Update
 
@@ -8,47 +8,27 @@
 
 # Pacman
  alias Pacman='sudo pacman -S'
- alias pacget='sudo pacman -S'
-
  alias Paclook='sudo pacman -Ss'
- alias paclook='sudo pacman -Ss'
-
  alias Pacrem='sudo pacman -Rcns'
- alias pacrem='sudo pacman -Rcns'
-
  alias Pacupd='sudo pacman -Syyu'
- alias pacupd='sudo pacman -Syyu'
-
  alias Pacsync='sudo pacman -Syy'
- alias pacsync='sudo pacman -Syy'
-
  alias Pacinfo='sudo pacman -Qi'
- alias pacinfo='sudo pacman -Qi'
-
  alias PacAUR='yaourt -Syu --aur'
- alias pacaur='yaourt -Syu --aur'
-
  alias Yaourt='yaourt -S'
 
-# Git
+# Dotfiles
  alias Dots='cd $HOME/.dotfiles && clear'
  alias Gadd='git add *'
  alias Gmit='git commit -m'
  alias Gpush='git push -u origin master'
  alias Gpull='git pull'
 
-# Applications
- alias svim='sudo vim'
- alias Yoump3='youtube-dl --extract-audio --audio-format mp3'
-
 # Configs
  alias ls='ls --color=auto'
  alias clear='clear && Gmnbox'
- alias Panelrst='killall lemonbar; sh $HOME/Gmnbox/Panel/panel'
  alias rm='rm -i'
 
 # Custom
- alias Fontfix='gbdfed'
  alias Headphones='amixer set Line\ Out toggle'
 
 # Games
@@ -56,9 +36,10 @@
  alias Setgame='xrander --output VGA! --mode 640x480'
 
 # System
+ alias svim='sudo vim'
  alias Copy='xclip -selection clipboard'
- alias Youtube_Fix='sudo iptables -I FORWARD -d 206.111.0.0/16 -j REJECT && \
-	sudo iptables -I FORWARD -d 173.194.55.0/24 -j REJECT'
+ alias Yoump3='youtube-dl --extract-audio --audio-format mp3'
+ alias Panelrst='pkill lemonbar; sh $HOME/Gmnbox/Panel/panel'
 
 # Usb
  alias Usbup='sudo mount -o gid=users,uid=oblivious,fmask=113,dmask=002 /dev/sdb1 .usbstick'
@@ -76,16 +57,14 @@
  alias metp='toilet --metal -f pagga -t'
  alias 3d='figlet -f 3d'
 
-# Systemctl Shortcuts
-
 # Plex
- alias Plex='sudo systemctl start plexmediaserver; Lemonpop Starting Plex'
- alias Plexrst='sudo systemctl restart plexmediaserver; Lemonpop Restarting Plex'
- alias Plexstop='sudo systemctl stop plexmediaserver; Lemonpop Stopping Plex'
+ alias Plex='sudo systemctl start plexmediaserver'
+ alias Plexrst='sudo systemctl restart plexmediaserver'
+ alias Plexstop='sudo systemctl stop plexmediaserver'
 
 # -- Plex library refresh
- alias Plex-refresh-Movies='curl http://localhost:32400/library/sections/8/refresh ; Lemonpop -p Refreshing Movies'
- alias Plex-refresh-TV='curl http://localhost:32400/library/sections/5/refresh ; Lemonpop -p Refreshing TV'
+ alias Plex-refresh-Movies='curl http://localhost:32400/library/sections/8/refresh '
+ alias Plex-refresh-TV='curl http://localhost:32400/library/sections/5/refresh '
 
 # Dropbox
  alias Dbstart='dropbox-cli start'

@@ -6,10 +6,11 @@
  xrandr --output VGA1 --brightness 0.95 &
 
 # Torrent alert loop 
- while :; do Alertpp; sleep 30; done &
+# while :; do Alertpp; sleep 30; done &
 
 # Enable hotkeys
  sxhkd &
+# sxhkd -c ~/.config/sxhkd/sxhkdrc.openbox & 
 
 # Custom Fonts
  xsetroot -cursor_name left_ptr
@@ -23,12 +24,13 @@
  $HOME/Gmnbox/Panel/panel & 
 
 # Shadow
- (sleep 3s && compton -c -t-5 -l-5 -r3 -o.45) &
+ compton -c -t-5 -l-5 -r3 -o.48 &
 
 # Misc
- (sleep 4s && numlockx) &
+# (sleep 4s && numlockx) &
 
 # Windows
+# exec openbox
  exec 2bwm
 # 2bwm &
 # urxvt 

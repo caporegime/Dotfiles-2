@@ -2,6 +2,12 @@
 # https://github.com/ObliviousGmn
 # Sxhkd - Shortcuts
 
+super + Escape
+    pkill -USR1 -x sxhkd
+
+super + Return
+    urxvt
+
 Print
     screenshot
 
@@ -15,10 +21,10 @@ XF86Calculator
     Lemonpop -w
 
 XF86Audio{Prev,Next}
-    ncmpcpp {prev,next}
+    mpc {prev,next}
 
 XF86AudioPlay
-    ncmpcpp toggle
+    mpc toggle
 
 XF86Audio{Raise,Lower}Volume
     amixer set Master {2dB+,2dB-}
@@ -26,8 +32,11 @@ XF86Audio{Raise,Lower}Volume
 XF86AudioMute
     amixer set Master toggle
 
+XF86HomePage
+    luakit
+
 XF86Launch1
-    urxvt -g 100x10 -e ncmpcpp
+    urxvt -g 100x12 -e ncmpcpp
 
 XF86Launch2
     urxvt -g 100x12 -e ranger

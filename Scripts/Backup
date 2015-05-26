@@ -8,11 +8,11 @@ clear
 . Colors 
 
 # Variables 
+BKDIR="Backup"
 BKUP="Backup_$(date +%m_%Y).tar"
 DROPOFF1="$HOME/Dropbox/Backups"
 DROPOFF2="$HOME/.usbstick/Backups"
 USBSTK="$HOME/.usbstick"
-BACKTMP="Backup"
 
 # Prints Filename & Date
 printf " ${Green}${0##*/} %85s $(date +%I:%M)${Reset} \n\n"
@@ -24,49 +24,52 @@ progress(){
 
 MKDIRS(){
   printf "  Organizing Files "
-  mkdir $BACKTMP
-  mkdir $BACKTMP/Home
-  mkdir $BACKTMP/Config
-  mkdir $BACKTMP/Ncmpcpp
-  mkdir $BACKTMP/Weechat
-  mkdir $BACKTMP/Root
-  mkdir $BACKTMP/Torrent
-  mkdir $BACKTMP/Netctl
-  mkdir $BACKTMP/Pacman
-  mkdir $BACKTMP/2bwm  
+  mkdir $BKDIR
+  mkdir $BKDIR/Home
+  mkdir $BKDIR/Config
+  mkdir $BKDIR/Ncmpcpp
+  mkdir $BKDIR/Weechat
+  mkdir $BKDIR/Root
+  mkdir $BKDIR/Torrent
+  mkdir $BKDIR/Netctl
+  mkdir $BKDIR/Pacman
+  mkdir $BKDIR/2bwm  
 
-  cp $HOME/.xinitrc $BACKTMP/Home
-  cp $HOME/.Xdefaults $BACKTMP/Home
-  cp $HOME/.bashrc $BACKTMP/Home
-  cp -ar $HOME/.fonts $BACKTMP/Home
+  cp $HOME/.xinitrc $BKDIR/Home
+  cp $HOME/.Xdefaults $BKDIR/Home
+  cp $HOME/.bashrc $BKDIR/Home
+  cp $HOME/.vimrc $BKDIR/Home
+  cp $HOME/.vim/colors/16color.vim $BKDIR/Home
+
+  cp -ar $HOME/.fonts $BKDIR/Home
   
-  cp /etc/vimrc $BACKTMP/Root
-  cp /etc/hosts.local $BACKTMP/Root
-  cp /etc/netctl/Gmnbox $BACKTMP/Netctl
-  cp /etc/pacman.conf $BACKTMP/Pacman
+  cp /etc/hosts.local $BKDIR/Root
+  cp /etc/netctl/Gmnbox $BKDIR/Netctl
+  cp /etc/pacman.conf $BKDIR/Pacman
 
-  cp -ar $HOME/Gmnbox $BACKTMP
-  cp -ar $HOME/.config/luakit $BACKTMP/Config
-  cp -ar $HOME/.config/ranger $BACKTMP/Config
-  cp -ar $HOME/.config/htop $BACKTMP/Config
-  cp -ar $HOME/.config/youtube-viewer $BACKTMP/Config 
-  cp -ar $HOME/.config/sxhkd $BACKTMP/Config
+  cp -ar $HOME/Gmnbox $BKDIR
+  cp -ar $HOME/.config/luakit $BKDIR/Config
+  cp -ar $HOME/.config/ranger $BKDIR/Config
+  cp -ar $HOME/.config/htop $BKDIR/Config
+  cp -ar $HOME/.config/sxhkd $BKDIR/Config
 
-  cp $HOME/.config/mpd/mpd.conf $BACKTMP/Ncmpcpp
-  cp -ar $HOME/Media/Music/Radio $BACKTMP/Ncmpcpp
-  cp $HOME/.ncmpcpp/config $BACKTMP/Ncmpcpp
+  cp $HOME/.ncmpcpp/config $BKDIR/Ncmpcpp
+  cp $HOME/.config/mpd/mpd.conf $BKDIR/Ncmpcpp
+  cp -ar $HOME/Media/Music/Radio $BKDIR/Ncmpcpp
   
-  cp $HOME/.config/transmission-daemon/settings.json $BACKTMP/Torrent
-  cp $HOME/.weechat/weechat.conf $BACKTMP/Weechat
-  cp $HOME/.weechat/irc.conf $BACKTMP/Weechat
-  cp $HOME/.local/share/luakit/bookmarks.db $BACKTMP/Config/luakit
-  cp $HOME/.Source/2bwm/config.h $BACKTMP/2bwm 
+  cp $HOME/.weechat/weechat.conf $BKDIR/Weechat
+  cp $HOME/.weechat/irc.conf $BKDIR/Weechat
+  cp $HOME/.weechat/trigger.conf $BKDIR/Weechat
+  
+  cp $HOME/.Source/2bwm/config.h $BKDIR/2bwm 
+  cp $HOME/.local/share/luakit/bookmarks.db $BKDIR/Config/luakit
+  cp $HOME/.config/transmission-daemon/settings.json $BKDIR/Torrent
   progress 66
 }
 
 MKPKG(){
   printf "  Zipping Folder "
-  tar cf $BKUP $BACKTMP;
+  tar cf $BKUP $BKDIR;
   progress 68
 }
 
@@ -92,7 +95,7 @@ DROPCHK(){
 DROPDB(){
   printf "  Cleaning up "
   mv $BKUP $DROPOFF1
-  rm -r $BACKTMP
+  rm -r $BKDIR
   progress 71
   echo
 }
@@ -100,7 +103,7 @@ DROPDB(){
 DROPUSB(){
   printf "  Cleaning up "
   mv $BKUP $DROPOFF2
-  rm -r $BACKTMP
+  rm -r $BKDIR
   progress 71
   echo
 }
@@ -121,7 +124,7 @@ case $1 in
   -d|dropbox) 
 	DROPCHK  
 	MKDIRS
-    	MKPKG
+    MKPKG
 	DROPDB ;;
 
   *) 

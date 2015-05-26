@@ -1,3 +1,7 @@
+"ObliviousGmn, May 2015
+"http://www.github.com/ObliviousGmn
+"Vim settings - ???
+
 :syntax on
 set backspace=2
 set autoindent
@@ -25,27 +29,3 @@ filetype on
 filetype plugin on
 set ofu=syntaxcomplete#Complete
 
-"set spell
-setlocal spelllang=en_ca
-set spellfile=~/.vim/spellfile.add
-
-highlight clear 		SpellBad
-highlight SpellBad 	term=standout 	ctermfg=1
-highlight SpellBad 	term=underline 	cterm=underline
-highlight	clear			SpellCap
-highlight	SpellCap	term=underline	cterm=underline
-highlight	clear			SpellRare
-highlight	SpellRare	term=underline	cterm=underline
-highlight	clear			SpellLocal
-highlight	SpellLocal term=underline	cterm=underline
-
-" Mutt
-:autocmd FileType mail :nmap <F8> :w<CR>:!aspell -e -c %<CR>:e<CR>
-au BufRead /tmp/mutt-* set tw=72
-au BufRead /tmp/mutt-* set cc=72
-au BufRead /tmp/mutt-* set spell
-" LaTeX
-:autocmd BufNewFile,BufRead *.tex set ft=tex
-:autocmd FileType tex set tw=100
-:autocmd FileType tex set cc=100
-:autocmd FileType tex set spell

@@ -2,35 +2,35 @@
 
 # ObliviousGmn, May 2015
 # https://github.com/ObliviousGmn
-# Panel for Lemonbar..
+# Panel for Lemonbar ..
 
 . $HOME/Gmnbox/Panel/bar_config
 
- ws(){
+ ws(){ # Current Workspace .. 
   ws=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
 	echo "%{F$YELLOW}${ws}"
 }
 
- menu(){
+ menu(){ # Useless for now ..
 	echo "%{B$BLUE}%{F$BG} GMN  %{B-}%{F-}"
 }
 
- temp(){
+ temp(){ # CPUs temp ..
   temp=$(sensors | awk '/Core 0/ {print +$3}')
 	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${temp}°"
 }
 	
- fan(){
+ fan(){ # Fan speeds ..
   fan=$(sensors | awk '/fan1/ {print $2,$3}')
 	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${fan}"
 }
 
- clock(){
+ clock(){ # Clock, obv ..
   clock=$(date "+%b %d %Y %I:%M")
 	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${clock}"
 }
 
- vol(){
+ vol(){ # Volume, Sets to Headset when switched ..
   switch=$(amixer get Master | awk '/Mono:/ {print $6}')
   vol=$(amixer get Master | awk '/Mono:/ {print $4}' | tr -d '[]%,')
   hsvol=$(amixer get PCM | awk '/Mono:/ {print $4}' | tr -d '[]%,')
@@ -44,26 +44,24 @@
   fi
 }
 
- mus(){
-  mus=$(ncmpcpp --now-playing)
+ mus(){ # Current song ..
+  mus=$(mpc current -f %title%)
 
   if [[ $mus ]]; then
  	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${mus}"
-  else
-	echo
   fi
 }
 
-click(){
-	echo "%{A:sh $HOME/menu:} test %{A}"
+last(){ # Weechat, Last highlight ..
+  last=$((tail -n1) </tmp/Weelog)
+
+  if [[ $last ]]; then
+  	echo "%{A:cat /dev/null > /tmp/Weelog:}${last}%{A}"
+  fi
 }
 
-# net(){
-#  test -n "`ip route`" && echo "Connected" || echo "Disconnected"
-#}
-
 while :; do 	
-	echo " $(ws) $(menu) $(vol) %{c}$(mus) %{r}$(temp) $(fan) $(clock) "
+	echo " $(ws) $(menu) $(vol) %{c}$(mus) %{r} $(last) $(temp) $(fan) $(clock) "
          sleep 0.5	
 done | lemonbar -g ${PW}x${PH}+${PX}+${PY} -f "$FONT1" -f "$FONT4" -B "$BG" -F "$FG" -d -p | \
 	while read line; do eval "$line"; done &

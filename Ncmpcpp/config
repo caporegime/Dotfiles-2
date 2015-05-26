@@ -1,20 +1,28 @@
-# ObliivousGmn, June 2014
+# ObliivousGmn, May 2015
 # https://github.com/ObliviousGmn
 # Ncmpcpp Config 
 
 # MPD Settings .. 
-mpd_crossfade_time = "2"
+mpd_crossfade_time = "3"
 mpd_music_dir = "~/Media/Music"
 # execute_on_song_change = "Lemonpop -mus $(mpc current -f %title%)"
 
-# Format ..
+# Display ..
 song_list_format = " $0%n $1• $8%t $R$0%A "
+song_columns_list_format = "(3)[]{}(92)[white]{t} (4)[red]{l}"
 song_status_format = " $3%t $0 "
-now_playing_prefix = " "
+playlist_display_mode = "classic" (classic/columns)
+
+# Now Playing ..
+now_playing_prefix = "$3>>"
+now_playing_suffix = "$8$/b"
+
+# Playlist ..
 browser_playlist_prefix = "$2 ♥ $0 "
+
+# Delays .. 
 playlist_disable_highlight_delay = "1"
 message_delay_time= "1"
-playlist_display_mode = "classic" (classic/columns)
 
 # Progress Bar ..
 progressbar_look = "---"
@@ -38,8 +46,7 @@ autocenter_mode = "yes"
 centered_cursor = "yes"
 titles_visibility = "no"
 statusbar_visibility = "yes"
-empty_tag_marker=" -- ‼ -- "
- # ---  
+empty_tag_marker=" -- ‼ -- " 
 mouse_support = "no"
 header_visibility = "no"
 display_remaining_time = "no"
