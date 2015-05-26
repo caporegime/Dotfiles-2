@@ -2,12 +2,12 @@
 # https://github.com/ObliviousGmn
 # Bashrc
 
-export PATH=$PATH:/home/oblivious/Gmnbox/Scripts
+export PATH=$PATH:/home/oblivious/Gmnbox/Bin
 export EDITOR=vim
 export BROWSER=luakit
-export PAGER=/usr/local/bin/vimpager
-alias less=$PAGER
-alias zless=$PAGER
+# export PAGER=/usr/local/bin/vimpager
+# alias less=$PAGER
+# alias zless=$PAGER
 
 clear 
 Gmnbox
