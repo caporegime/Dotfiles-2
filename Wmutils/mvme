@@ -1,5 +1,5 @@
 #!/bin/sh
-# ObliviousGmn, May 2014
+# ObliviousGmn, May 2015
 # Wmutils script
 
 wid=$(pfw)
