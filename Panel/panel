@@ -2,13 +2,14 @@
 
 # ObliviousGmn, May 2015
 # https://github.com/ObliviousGmn
+# Thanks lucafav for ping idea! :)
 # Panel for Lemonbar ..
 
 . $HOME/Gmnbox/Panel/bar_config
 
  ws(){ # Current Workspace .. 
   ws=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
-	echo "%{F$YELLOW}${ws}"
+	echo "${ws} "
 }
 
  menu(){ # Useless for now ..
@@ -17,17 +18,17 @@
 
  temp(){ # CPUs temp ..
   temp=$(sensors | awk '/Core 0/ {print +$3}')
-	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${temp}°"
+	echo "%{F$BLUE}  %{F-} ${temp}°"
 }
 	
  fan(){ # Fan speeds ..
   fan=$(sensors | awk '/fan1/ {print $2,$3}')
-	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${fan}"
+	echo "%{F$BLUE}  %{F-} ${fan}"
 }
 
  clock(){ # Clock, obv ..
   clock=$(date "+%b %d %Y %I:%M")
-	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${clock}"
+	echo "%{F$BLUE}  %{F-} ${clock}"
 }
 
  vol(){ # Volume, Sets to Headset when switched ..
@@ -36,11 +37,11 @@
   hsvol=$(amixer get PCM | awk '/Mono:/ {print $4}' | tr -d '[]%,')
 
   if [ "$switch" = "[on]" ]; then
-	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${vol}"
+	echo "%{F$BLUE}  %{F-} ${vol}"
   elif [ "$switch" = "[off]" ]; then
-	echo "%{F$RED}  %{F-}%{F$YELLOW} MUTE"
+	echo "%{F$RED}  %{F-} MUTE"
   else
-	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${hsvol} "
+	echo "%{F$BLUE}  %{F-} ${hsvol} "
   fi
 }
 
@@ -48,21 +49,33 @@
   mus=$(mpc current -f %title%)
 
   if [[ $mus ]]; then
- 	echo "%{F$BLUE}  %{F-}%{F$YELLOW} ${mus}"
+ 	echo "%{F$BLUE}  %{F-} ${mus}"
   fi
 }
 
 last(){ # Weechat, Last highlight ..
-  last=$((tail -n1) </tmp/Weelog)
+  last=$((tail -n1) <$HOME/Gmnbox/Panel/Weelog)
 
   if [[ $last ]]; then
-  	echo "%{A:cat /dev/null > /tmp/Weelog:}${last}%{A}"
+  	echo "%{A:cat /dev/null > $HOME/Gmnbox/Panel/Weelog:}${last}%{A}"
   fi
 }
 
-while :; do 	
-	echo " $(ws) $(menu) $(vol) %{c}$(mus) %{r} $(last) $(temp) $(fan) $(clock) "
+net(){ # Connected or nah? ..
+  ping=$(ping 8.8.8.8 -c 1 | awk '/rtt/ {printf("%d\n",$4 + 0.5)}')
+  test -n "${ping}" && echo "%{F$BLUE}  %{F-} ${ping}ms" || echo "%{F$BLUE}  %{F-} No Connection"
+}
+
+while :; do
+
+ # Looping to slowdown ping ..
+ [[ loops -eq 10 ]] && loops=0
+ [[ loops -eq 0 ]] && ping=$(net)
+ loops=$(( loops + 1 ))
+
+	echo "  $(ws) $(menu) $(vol) $(last) %{c}$(mus) %{r}$(temp) $(fan) $ping $(clock)  "
          sleep 0.5	
-done | lemonbar -g ${PW}x${PH}+${PX}+${PY} -f "$FONT1" -f "$FONT4" -B "$BG" -F "$FG" -d -p | \
+		 
+done | lemonbar -g ${PW}x${PH}+${PX}+${PY} -f "$FONT1" -f "$FONT4" -B "$BG" -F "$YELLOW" -d -p | \
 	while read line; do eval "$line"; done &
 
