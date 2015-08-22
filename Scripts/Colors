@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ObliviousGmn, April 2015
+# ObliviousGmn, August 2015
 # https://github.com/ObliviousGmn
 # Colors - ???
 
@@ -35,5 +35,6 @@ On_Purple=$'\e[45m'      # Purple
 On_Cyan=$'\e[46m'        # Cyan
 On_White=$'\e[47m'       # White
 
-Reset=$"\e[m"               # Color Reset
+Reset=$'\e[m'            # Color Reset
+ResetPS=$"\[\e[m\]"      # Color Reset for PS1
 

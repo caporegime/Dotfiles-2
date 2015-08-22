@@ -23,5 +23,5 @@ next_hue() {
 }	
 
 PROMPT_COMMAND=next_hue
-PS1="  -- ${Reset} "
+PS1=" -- ${ResetPS} "
 

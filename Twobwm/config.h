@@ -5,7 +5,7 @@
 /* Move this many pixels when moving or resizing with keyboard unless the window has hints saying otherwise.
  *0)move step slow   1)move step fast
  *2)mouse slow       3)mouse fast     */
-static const uint16_t movements[] = {20,40,15,400};
+static const uint16_t movements[] = {10,20,15,400};
 /* resize by line like in mcwm -- jmbi */
 static const bool     resize_by_line          = true;
 /* the ratio used when resizing and keeping the aspect */
@@ -19,7 +19,7 @@ static const uint8_t offsets[] = {10,45,20,55};
  *2)fixedcol         3)unkilcol
  *4)fixedunkilcol    5)outerbordercol
  *6)emptycol         */
-static const char *colors[] = {"#333340","#292933","#7a8c5c","#ff6666","#cc9933","#0d131a","#000000"};
+static const char *colors[] = {"#333340","#333333","#54746E","#745D51","#cc9933","#0d131a","#131314"};
 /*
  * If you are using a composition manager enable the COMPTON flag in the Makefile
  * (By changing -DNCOMPTON to -DCOMPTON)
@@ -36,7 +36,7 @@ static const bool inverted_colors = false;
 /*0) Outer border size. If you put this negative it will be a square.
  *1) Full borderwidth    2) Magnet border size
  *3) Resize border size  */
-static const uint8_t borders[] = {1,2,10,2};
+static const uint8_t borders[] = {1,3,10,2};
 /* Windows that won't have a border.*/
 #define LOOK_INTO "WM_NAME"
 static const char *ignore_names[] = {"bar", "xclock"};
@@ -119,7 +119,7 @@ static key keys[] = {
     {  MOD ,              XK_Home,       resizestep_aspect, {.i=TWOBWM_RESIZE_KEEP_ASPECT_GROW}},
     {  MOD ,              XK_End,        resizestep_aspect, {.i=TWOBWM_RESIZE_KEEP_ASPECT_SHRINK}},
     // Full screen window without borders
-    {  MOD ,              XK_x,         maximize,          {.i=TWOBWM_FULLSCREEN_OVERRIDE_OFFSETS}},
+    {  MOD ,              XK_x,         maximize,           {.i=TWOBWM_FULLSCREEN_OVERRIDE_OFFSETS}},
     //Full screen window without borders overiding offsets
     {  MOD |SHIFT ,       XK_x,          maximize,          {.i=TWOBWM_FULLSCREEN}},
     // Maximize vertically
@@ -144,46 +144,56 @@ static key keys[] = {
     //unfold horizontally
     {  MOD |SHIFT|CONTROL,XK_n,          maxhalf,           {.i=TWOBWM_MAXHALF_UNFOLD_HORIZONTAL}},
     // Next/Previous screen
-    {  MOD ,              XK_comma,      changescreen,      {.i=TWOBWM_NEXT_SCREEN}},
-    {  MOD ,              XK_period,     changescreen,      {.i=TWOBWM_PREVIOUS_SCREEN}},
+    //{  MOD ,              XK_comma,      changescreen,      {.i=TWOBWM_NEXT_SCREEN}},
+    //{  MOD ,              XK_period,     changescreen,      {.i=TWOBWM_PREVIOUS_SCREEN}},
     // Raise or lower a window
     {  MOD ,              XK_r,          raiseorlower,      {}},
     // Next/Previous workspace
-    {  MOD ,              XK_v,          nextworkspace,     {}},
-    {  MOD ,              XK_c,          prevworkspace,     {}},
+    {  MOD ,              XK_comma,           prevworkspace,     {}},
+    {  MOD ,              XK_period,          nextworkspace,     {}},
     // Move to Next/Previous workspace
-    {  MOD |SHIFT ,       XK_v,          sendtonextworkspace,{}},
-    {  MOD |SHIFT ,       XK_c,          sendtoprevworkspace,{}},
+    {  MOD |SHIFT ,       XK_comma,          sendtoprevworkspace,{}},
+    {  MOD |SHIFT ,       XK_period,         sendtonextworkspace,{}},
     // Iconify the window
-    {  MOD ,              XK_i,          hide,              {}},
+    // {  MOD ,              XK_i,          hide,              {}},
     // Make the window unkillable
     {  MOD ,              XK_a,          unkillable,        {}},
     // Make the window appear always on top
     {  MOD,               XK_t,          always_on_top,     {}},
     // Make the window stay on all workspaces
     {  MOD ,              XK_f,          fix,               {}},
-    // Move the cursor
-    {  MOD ,              XK_Up,         cursor_move,       {.i=TWOBWM_CURSOR_UP_SLOW}},
-    {  MOD ,              XK_Down,       cursor_move,       {.i=TWOBWM_CURSOR_DOWN_SLOW}},
-    {  MOD ,              XK_Right,      cursor_move,       {.i=TWOBWM_CURSOR_RIGHT_SLOW}},
-    {  MOD ,              XK_Left,       cursor_move,       {.i=TWOBWM_CURSOR_LEFT_SLOW}},
-    // Move the cursor faster
-    {  MOD |SHIFT,        XK_Up,         cursor_move,       {.i=TWOBWM_CURSOR_UP}},
-    {  MOD |SHIFT,        XK_Down,       cursor_move,       {.i=TWOBWM_CURSOR_DOWN}},
-    {  MOD |SHIFT,        XK_Right,      cursor_move,       {.i=TWOBWM_CURSOR_RIGHT}},
-    {  MOD |SHIFT,        XK_Left,       cursor_move,       {.i=TWOBWM_CURSOR_LEFT}},
+    // Move window with arrow keys
+    {  MOD ,              XK_Up,         movestep,           {.i=TWOBWM_MOVE_UP}},
+    {  MOD ,              XK_Down,       movestep,           {.i=TWOBWM_MOVE_DOWN}},
+    {  MOD ,              XK_Right,      movestep,           {.i=TWOBWM_MOVE_RIGHT}},
+    {  MOD ,              XK_Left,       movestep,           {.i=TWOBWM_MOVE_LEFT}},
+    // Move window with arrow keys slower
+    {  MOD |CONTROL,        XK_Up,         movestep,         {.i=TWOBWM_MOVE_UP_SLOW}},
+    {  MOD |CONTROL,        XK_Down,       movestep,         {.i=TWOBWM_MOVE_DOWN_SLOW}},
+    {  MOD |CONTROL,        XK_Right,      movestep,         {.i=TWOBWM_MOVE_RIGHT_SLOW}},
+    {  MOD |CONTROL,        XK_Left,       movestep,         {.i=TWOBWM_MOVE_LEFT_SLOW}},
+	// Resize window with arrow keys	
+    {  MOD |SHIFT,        XK_Up,          resizestep,        {.i=TWOBWM_RESIZE_UP}},
+    {  MOD |SHIFT,        XK_Down,        resizestep,        {.i=TWOBWM_RESIZE_DOWN}},
+    {  MOD |SHIFT,        XK_Right,       resizestep,        {.i=TWOBWM_RESIZE_RIGHT}},
+    {  MOD |SHIFT,        XK_Left,        resizestep,        {.i=TWOBWM_RESIZE_LEFT}},
+    // Resize window with arrow keys slow 
+    {  MOD |SHIFT|CONTROL, XK_Up,          resizestep,       {.i=TWOBWM_RESIZE_UP_SLOW}},
+    {  MOD |SHIFT|CONTROL, XK_Down,        resizestep,       {.i=TWOBWM_RESIZE_DOWN_SLOW}},
+    {  MOD |SHIFT|CONTROL, XK_Right,       resizestep,       {.i=TWOBWM_RESIZE_RIGHT_SLOW}},
+    {  MOD |SHIFT|CONTROL, XK_Left,        resizestep,       {.i=TWOBWM_RESIZE_LEFT_SLOW}},
     // Start programs
-    {  MOD ,              XK_Return,     start,             {.com = terminal}},
-    {  MOD ,              XK_w,          start,             {.com = menucmd}},
-    {  MOD |SHIFT,        XK_w,          start,             {.com = gmrun}},
+    {  MOD ,              XK_Return,     start,              {.com = terminal}},
+    {  MOD ,              XK_w,          start,              {.com = menucmd}},
+    //{  MOD |SHIFT,        XK_w,          start,              {.com = gmrun}},
     // Exit or restart 2bwm
-    {  MOD |CONTROL,      XK_q,          twobwm_exit,       {.i=0}},
-    {  MOD |CONTROL,      XK_r,          twobwm_restart,    {.i=0}},
-    {  MOD ,              XK_space,      halfandcentered,   {.i=0}},
-    // Fake clicks using xdotool
-    {  MOD |CONTROL,      XK_Up,         start,             {.com = click1}},
-    {  MOD |CONTROL,      XK_Down,       start,             {.com = click2}},
-	{  MOD |CONTROL,      XK_Right,      start,             {.com = click3}},
+    {  MOD |CONTROL,      XK_q,          twobwm_exit,        {.i=0}},
+    {  MOD |CONTROL,      XK_r,          twobwm_restart,     {.i=0}},
+    {  MOD ,              XK_space,      halfandcentered,    {.i=0}},
+   // Fake clicks using xdotool
+   // {  MOD |CONTROL,      XK_Up,         start,            {.com = click1}},
+   // {  MOD |CONTROL,      XK_Down,       start,            {.com = click2}},
+   // {  MOD |CONTROL,      XK_Right,      start,            {.com = click3}},
 
     // Change current workspace
        DESKTOPCHANGE(     XK_1,                             0)

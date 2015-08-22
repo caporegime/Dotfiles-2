@@ -1,37 +1,39 @@
-# ObliviouGmn, April 2015
+# ObliviouGmn, June 2015
 # https://github.com/ObliviousGmn
 # Xinitrc 
 
-# Graphics card is way too bright by default 
+# Turn the brightness down a tad ..
  xrandr --output VGA1 --brightness 0.95 &
 
-# Torrent alert loop 
+# If mpd is already on don't start ..
+ pgrep mpd &>/dev/null || mpd 
+
+# Torrent alert loop ..
 # while :; do Alertpp; sleep 30; done &
 
-# Enable hotkeys
+# Enable hotkeys ..
  sxhkd &
 # sxhkd -c ~/.config/sxhkd/sxhkdrc.openbox & 
 
-# Custom Fonts
+# Fonts ..
  xsetroot -cursor_name left_ptr
  xset +fp /usr/share/fonts/local
  xset +fp /usr/share/fonts/artwiz-fonts
  xset +fp $HOME/.fonts
  xset fp rehash
 
-# Wall & Docks
- hsetroot -fill /home/oblivious/Media/Walls/Grasslady.jpg -tint '#CCCCCC'
- $HOME/Gmnbox/Panel/panel & 
+# Wall & Bar ..
+ hsetroot -fill /home/oblivious/Media/Walls/sunnyhill.png -tint '#CCCCCC'
+ $HOME/Gmnbox/Panel/panel &
 
-# Shadow
+# Shadow .. 
  compton -c -t-5 -l-5 -r3 -o.48 &
 
-# Misc
+# Misc .. 
 # (sleep 4s && numlockx) &
 
-# Windows
+# Run .. 
 # exec openbox
+# exec swm
  exec 2bwm
-# 2bwm &
-# urxvt 
 

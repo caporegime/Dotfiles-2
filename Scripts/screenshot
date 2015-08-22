@@ -6,8 +6,19 @@
 
 . $HOME/Gmnbox/Panel/bar_config
 
+popup(){ # Fancy pop for screenshot .. 
 aplay -q $HOME/Gmnbox/Sounds/camera.wav &
 scrot -d 1 -z -t 15 -q 100 '/home/oblivious/Media/Screens/%m_%d_%Y.png'\
-       	| Lemonpop -s Taking a screenshot..
+       	| Lemonpop -s Taking a screenshot ..
+}
 
+nopop(){ # Kinda use it to make wallpapers .. 
+  scrot -d 3 -q 100 '/home/oblivious/Media/Walls/%m_%d_%Y.png'
+}
 
+case $1 in 
+	
+	1) nopop ;;
+	*) popup ;;
+	
+esac

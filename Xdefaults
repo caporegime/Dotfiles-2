@@ -2,10 +2,10 @@
 # https://github.com/ObliviousGmn
 # Xdefaults 
  
-#include "/home/oblivious/Gmnbox/Colors/Reborn"
+#include "/home/oblivious/Gmnbox/Colors/gintage"
 
- *font:		xft:gmnterm
- *boldFont:	xft:gmnterm
+ *font:		 xft:gmnterm
+ *boldFont:	 xft:gmnterm
 
  *scrollBar: 	false
  *geometry:   	100x10
